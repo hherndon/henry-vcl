@@ -1,0 +1,174 @@
+Curtis Diagnostics Dump made on Sat Apr 08 2:22:00 PM Pacific Daylight Time 2017
+
+Flash failed at error 2
+
+Processor type is ST276
+
+The following files are in the Curtis\WinVCL directory (C:/Curtis/WinVCL)
+
+drwxr--r--   1        0       0     4096 Apr  8 13:05 Doc
+drwxr--r--   1        0       0     4096 Apr  8 13:05 Monitor_272
+drwxr--r--   1        0       0        0 Apr  8 13:05 Monitor_Old
+-rw-r--r--   1        0       0     9242 Aug 21 2014 ST10Flash.cfg
+-rw-r--r--   1        0       0     2689 Aug 21 2014 Textdict.csv
+-rw-r--r--   1        0       0   361179 Jan 15 2015 WinVCL.tkd
+-rw-r--r--   1        0       0     1078 Aug 21 2014 WinVCL_Setup.ico
+-rw-r--r--   1        0       0    15086 Aug 21 2014 Winvcl.ico
+-rwxr--r--   1        0       0   180736 Jan 15 2015 buildEDS.exe
+-rwxr--r--   1        0       0    60928 Jan 15 2015 cipher.exe
+-rwxr--r--   1        0       0      370 Aug 21 2014 cleanup.bat
+-rwxr--r--   1        0       0    95232 Jan 15 2015 cpp.exe
+-rw-r--r--   1        0       0     2734 Aug 21 2014 curtis_distribute.ico
+-rw-r--r--   1        0       0      111 Aug 21 2014 distrib_flags
+-rwxr--r--   1        0       0    58880 Jan 15 2015 filecopy.exe
+-rwxr--r--   1        0       0    56320 Jan 15 2015 filedelete.exe
+-rwxr--r--   1        0       0    71168 Jan 15 2015 flash.exe
+-rwxr--r--   1        0       0    48128 Jan 15 2015 getudir.exe
+-rw-r--r--   1        0       0     1688 Aug 21 2014 hello.vcl
+-rwxr--r--   1        0       0    73216 Jan 15 2015 make_cbf.exe
+-rwxr--r--   1        0       0   100352 Jan 15 2015 monitor.exe
+-rwxr--r--   1        0       0    91136 Jan 15 2015 package.exe
+-rwxr--r--   1        0       0   102912 Jan 15 2015 pir.exe
+-rwxr--r--   1        0       0   122880 Jan 15 2015 pout.exe
+-rwxr--r--   1        0       0    86528 Jan 15 2015 pp.exe
+-rwxr--r--   1        0       0    77824 Jan 15 2015 run_time_limits.exe
+-rw-r--r--   1        0       0     5010 Apr  8 13:05 setup.log
+-rw-r--r--   1        0       0   192512 Aug 21 2014 st10flasher_272.dll
+-rw-r--r--   1        0       0   229376 Aug 21 2014 st10flasher_old.dll
+-rwxr--r--   1        0       0    65024 Jan 15 2015 stitch.exe
+drwxrwxrwx   4        0       0        0 Dec 31 1969 tclkit-win32.exe
+-rwxr--r--   1        0       0    64512 Oct 18 2003 uninstall.exe
+-rw-r--r--   1        0       0      921 Aug 21 2014 unitdict.csv
+-rwxr--r--   1        0       0   159744 Aug 21 2014 unzip.exe
+-rwxr--r--   1        0       0    68608 Jan 15 2015 updateCSV.exe
+-rwxr--r--   1        0       0   200192 Jan 15 2015 vcl.exe
+-rwxr--r--   1        0       0    64000 Jan 15 2015 wrapper.exe
+-rwxr--r--   1        0       0   126976 Aug 21 2014 zip.exe
+-rwxr--r--   1        0       0    61440 Aug 21 2014 zipnote.exe
+
+
+
+The following files are in the WinVCL directory (C:/Users/T430/AppData/Local/WinVCL)
+
+-rw-r--r--   1        0       0        0 Apr  8 14:22 Command.log
+-rw-r--r--   1        0       0   192512 Apr  8 14:22 ST10Flasher.dll
+-rw-r--r--   1        0       0      225 Apr  8 13:09 WinVCL.bak
+-rw-r--r--   1        0       0      252 Apr  8 13:09 WinVCL.ini
+drwxr--r--   1        0       0        0 Apr  8 13:09 distrib
+-rwxr--r--   1        0       0    71168 Apr  8 14:22 flash.exe
+-rw-r--r--   1        0       0      172 Apr  8 14:22 flash_estimate.log
+-rw-r--r--   1        0       0      310 Apr  8 14:16 flash_program.log
+-rw-r--r--   1        0       0       43 Apr  8 14:22 fr.txt
+-rw-r--r--   1        0       0      313 Apr  8 13:05 hello.bak
+drwxr--r--   1        0       0     4096 Apr  8 14:22 monitor
+-rw-r--r--   1        0       0      252 Apr  8 13:09 new_proj.ini
+drwxr--r--   1        0       0     4096 Apr  8 13:09 os123xes
+-rw-r--r--   1        0       0     9242 Apr  8 14:22 st10Flash.cfg
+-rw-r--r--   1        0       0      242 Apr  8 14:22 temp.ini
+
+
+
+The following files are in the WinVCL directory (C:/Users/T430/AppData/Local/WinVCL/os123xes)
+
+drwxr--r--   1        0       0        0 Apr  8 13:09 Archive
+-rw-r--r--   1        0       0    46110 Jan  8 2014 Startmanager_123xes_Primary_2_0.H86
+-rw-r--r--   1        0       0      136 Sep 17 2015 os123xes.bsh
+-rw-r--r--   1        0       0   223151 Sep 17 2015 os123xes.bsl
+-rw-r--r--   1        0       0    83563 Sep 11 2015 os123xes.def
+-rw-r--r--   1        0       0     2110 Apr  8 14:21 os123xes.dfi
+-rw-r--r--   1        0       0     2102 Nov 10 2015 os123xes.dfl
+-rw-r--r--   1        0       0   627370 Sep 17 2015 os123xes.hex
+-rw-r--r--   1        0       0   288574 Sep 11 2015 os123xes.htm
+-rw-r--r--   1        0       0    45484 Sep 11 2015 os123xes.map
+-rw-r--r--   1        0       0    86518 Sep 11 2015 os123xes.mon
+-rw-r--r--   1        0       0       10 Nov 10 2015 os123xes.pdk
+-rw-r--r--   1        0       0    12890 Nov 10 2015 os123xes.prm
+-rw-r--r--   1        0       0      364 Nov 10 2015 os123xes.txt
+-rw-r--r--   1        0       0   138722 Nov 10 2015 pout.app
+
+
+
+The following files are in the monitor directory (C:/Users/T430/AppData/Local/WinVCL/monitor)
+
+-rw-r--r--   1        0       0     3824 Apr  8 14:22 Monitor001.hex
+-rw-r--r--   1        0       0     4449 Apr  8 14:22 Monitor002.hex
+-rw-r--r--   1        0       0     4449 Apr  8 14:22 Monitor003.hex
+-rw-r--r--   1        0       0     4363 Apr  8 14:22 Monitor004a.hex
+-rw-r--r--   1        0       0     5246 Apr  8 14:22 Monitor004b.hex
+-rw-r--r--   1        0       0     3962 Apr  8 14:22 Monitor006.hex
+-rw-r--r--   1        0       0     2150 Apr  8 14:22 st10noflash.hex
+-rw-r--r--   1        0       0      382 Apr  8 14:22 startchipid.hex
+
+----------------------------- error 1 would occur here
+
+The flash INI file (C:/Users/T430/AppData/Local/WinVCL/temp.ini) contains:
+
+[Program_Flash]
+/projects/hello/VCLtemp/package.hex
+C:/Users/T430/AppData/Local/WinVCL/os123xes/os123xes.hex
+C:/Users/T430/AppData/Local/WinVCL/os123xes/Startmanager_123xes_Primary_2_0.H86
+
+[parameters]
+processor_type=ST276
+
+[End]
+
+
+
+The switchless strategy is 2
+
+The flash result file contains:
+
+error
+COM port (COM1) cannot be accessed
+
+
+----------------------------- error 2 would occur here
+
+Error 2: There was a problem executing flash when trying to make the download time estimate
+                  ALLUSERSPROFILE = C:\ProgramData
+                          APPDATA = C:\Users\T430\AppData\Roaming
+                     COMPUTERNAME = T430-PC
+                          ComSpec = C:\WINDOWS\system32\cmd.exe
+               CommonProgramFiles = C:\Program Files (x86)\Common Files
+          CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
+               CommonProgramW6432 = C:\Program Files\Common Files
+   FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+  FPS_BROWSER_USER_PROFILE_STRING = Default
+                 FP_NO_HOST_CHECK = NO
+                             HOME = C:\Users\T430
+                        HOMEDRIVE = C:
+                         HOMEPATH = \Users\T430
+                     LOCALAPPDATA = C:\Users\T430\AppData\Local
+                      LOGONSERVER = \\T430-PC
+             NUMBER_OF_PROCESSORS = 4
+                               OS = Windows_NT
+                         OneDrive = C:\Users\T430\OneDrive
+                          PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+           PROCESSOR_ARCHITECTURE = x86
+           PROCESSOR_ARCHITEW6432 = AMD64
+             PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+                  PROCESSOR_LEVEL = 6
+               PROCESSOR_REVISION = 3a09
+                     PSModulePath = C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+                           PUBLIC = C:\Users\Public
+                             Path = C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+                      ProgramData = C:\ProgramData
+                     ProgramFiles = C:\Program Files (x86)
+                ProgramFiles(x86) = C:\Program Files (x86)
+                     ProgramW6432 = C:\Program Files
+                      SESSIONNAME = Console
+                      SystemDrive = C:
+                       SystemRoot = C:\WINDOWS
+                             TEMP = C:\Users\T430\AppData\Local\Temp
+                              TMP = C:\Users\T430\AppData\Local\Temp
+                              TVT = C:\Program Files (x86)\Lenovo
+                       USERDOMAIN = T430-PC
+        USERDOMAIN_ROAMINGPROFILE = T430-PC
+                         USERNAME = T430
+                      USERPROFILE = C:\Users\T430
+                           windir = C:\WINDOWS
+            windows_tracing_flags = 3
+          windows_tracing_logfile = C:\BVTBin\Tests\installpackage\csilogfile.log
+
+
