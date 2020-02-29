@@ -186,7 +186,7 @@ Setup_Mailbox_Data(packControl,8,
 					0,	 
 					0,	   
 					0)	
-enable_mailbox(packControl)
+;enable_mailbox(packControl)
 
 Setup_Mailbox(packStatus, 0, 0, 0x188, C_EVENT, C_RCV, 0, 0)
 Setup_Mailbox_Data(packStatus,8,
@@ -231,21 +231,46 @@ Setup_Mailbox_Data(cellVoltage, 8,
 					@VoltageCAN+USEHB,
 					0,
 					0)	
+				
 
-Setup_Mailbox(can20, 0, 0, 0x550, C_CYCLIC, C_XMT, 0, 0)
-Setup_Mailbox_Data(can20,8,
+Setup_Mailbox(can18, 0, 0, 0x550, C_CYCLIC, C_XMT, 0, 0)
+Setup_Mailbox_Data(can18,8,
 					@Motor_RPM+USEHB,	  		
                     @Motor_RPM,
 					@Irms+USEHB,			 
 					@Irms,	 
 					@IqReq+USEHB,		  
 					@IqReq,	 
+					@IdWeakened+USEHB,	   
+					@IdWeakened)
+enable_mailbox(can18)	
+
+Setup_Mailbox(can19, 0, 0, 0x551, C_CYCLIC, C_XMT, 0, 0)
+Setup_Mailbox_Data(can19,8,
+					@Capacitor_voltage+USEHB,	  		
+                    @Capacitor_voltage,
+					@Vmag+USEHB,			 
+					@Vmag,	 
+					@Battery_Current+USEHB,		  
+					@Battery_Current,	 
 					0,	   
-					0)	
-enable_mailbox(can20)				
+					0)
+enable_mailbox(can19)
+
+Setup_Mailbox(can20, 0, 0, 0x552, C_CYCLIC, C_XMT, 0, 0)
+Setup_Mailbox_Data(can20,8,
+					@Controller_Temperature+USEHB,	  		
+                    @Controller_Temperature,
+					@Motor_Temperature+USEHB,			 
+					@Motor_Temperature,	 
+					@0,		  
+					@0,		  
+					@0,		  
+					@0)	  
+enable_mailbox(can20)	
 					
 Startup_CAN()
-CAN_Set_Cyclic_Rate( 30 );actually 120ms 		
+CAN_Set_Cyclic_Rate( 1 );actually x4ms 		
 Setup_NMT_State(ENTER_OPERATIONAL)			;Set NMT state so we can detect global NMT commands
 Startup_CAN_Cyclic()
 
