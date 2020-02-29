@@ -74,6 +74,7 @@ packActiveData equals can3
 packTime equals can4
 ; do not use can5-can14
 cellVoltage equals can15
+vehicleData equals can20
 
 ; Message Variables
 create BMSNode variable
@@ -229,7 +230,19 @@ Setup_Mailbox_Data(cellVoltage, 8,
 					@VoltageCAN,
 					@VoltageCAN+USEHB,
 					0,
-					0)					
+					0)	
+
+Setup_Mailbox(can20, 0, 0, 0x550, C_CYCLIC, C_XMT, 0, 0)
+Setup_Mailbox_Data(can20,8,
+					@Motor_RPM+USEHB,	  		
+                    @Motor_RPM,
+					@Irms+USEHB,			 
+					@Irms,	 
+					@IqReq+USEHB,		  
+					@IqReq,	 
+					0,	   
+					0)	
+enable_mailbox(can20)				
 					
 Startup_CAN()
 CAN_Set_Cyclic_Rate( 30 );actually 120ms 		
