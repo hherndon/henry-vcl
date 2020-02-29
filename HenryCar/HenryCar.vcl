@@ -263,8 +263,8 @@ Setup_Mailbox_Data(can20,8,
                     @Controller_Temperature,
 					@Motor_Temperature+USEHB,			 
 					@Motor_Temperature,	 
-					@0,		  
-					@0,		  
+					0,		  
+					0,		  
 					@Motor_RPM+USEHB,	  		
                     @Motor_RPM)	  
 enable_mailbox(can20)	
