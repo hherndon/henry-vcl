@@ -239,8 +239,8 @@ Setup_Mailbox_Data(can18,8,
 					@Irms,
 					@WeakenedId+USEHB,	   
 					@WeakenedId,
-					@IqReq+USEHB,		  
-					@IqReq,
+					0,		  
+					0,
 					@IdReq+USEHB,
 					@IdReq)
 enable_mailbox(can18)	
