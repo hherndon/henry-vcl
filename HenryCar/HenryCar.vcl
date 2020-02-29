@@ -234,15 +234,15 @@ Setup_Mailbox_Data(cellVoltage, 8,
 				
 
 Setup_Mailbox(can18, 0, 0, 0x550, C_CYCLIC, C_XMT, 0, 0)
-Setup_Mailbox_Data(can18,8,
-					@Motor_RPM+USEHB,	  		
-                    @Motor_RPM,
+Setup_Mailbox_Data(can18,8,	 
 					@Irms+USEHB,			 
-					@Irms,	 
+					@Irms,
+					@WeakenedId+USEHB,	   
+					@WeakenedId,
 					@IqReq+USEHB,		  
-					@IqReq,	 
-					@IdWeakened+USEHB,	   
-					@IdWeakened)
+					@IqReq,
+					@IdReq+USEHB,
+					@IdReq)
 enable_mailbox(can18)	
 
 Setup_Mailbox(can19, 0, 0, 0x551, C_CYCLIC, C_XMT, 0, 0)
@@ -265,8 +265,8 @@ Setup_Mailbox_Data(can20,8,
 					@Motor_Temperature,	 
 					@0,		  
 					@0,		  
-					@0,		  
-					@0)	  
+					@Motor_RPM+USEHB,	  		
+                    @Motor_RPM)	  
 enable_mailbox(can20)	
 					
 Startup_CAN()
