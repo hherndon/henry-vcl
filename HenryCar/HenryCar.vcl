@@ -68,13 +68,12 @@
 	
 ;---------------- CAN Variables -----------------------------	
 ; Mailboxes
-packControl equals can1
-packStatus equals can2
-packActiveData equals can3
-packTime equals can4
+ISAcurrentMsg equals can1
+ISAvoltageMsg equals can2
+ISAcommandMsg equals can3
+ISAampSecondMsg equals can4
+ISAwattHourMsg equals can15
 ; do not use can5-can14
-cellVoltage equals can15
-vehicleData equals can20
 
 ; Message Variables
 create BMSNode variable
@@ -116,6 +115,8 @@ create StartupPulse variable
 LastSwitchStates equals user_bit3
     LastDash1State bit LastSwitchStates.1
 	LastDash2State bit LastSwitchStates.2
+	LastDash3State bit LastSwitchStates.3
+	LastDash4State bit LastSwitchStates.4
 	
 SpyLEDs equals user_bit4
 	Led1 bit SpyLEDs.1
@@ -264,7 +265,7 @@ Setup_Mailbox_Data(can20,8,
 					@Motor_Temperature+USEHB,			 
 					@Motor_Temperature,	 
 					0,		  
-					0,		  
+					asdf0,		  
 					@Motor_RPM+USEHB,	  		
                     @Motor_RPM)	  
 enable_mailbox(can20)	
@@ -277,6 +278,20 @@ Startup_CAN_Cyclic()
 ;enable_precharge()
 
 main:
+;---------------- Cruise Control -----------------------------------------
+
+;capture max speed
+if((DashSwitch3 = ON) & (LastDash3State = OFF)){
+	Max_Speed_TrqM = MotorSpeedFiltered
+}
+LastDash3State = DashSwitch3
+
+;restore max speed to 5000
+if((DashSwitch4 = ON) & (LastDash4State = OFF)){
+	Max_Speed_TrqM = 5000
+}
+LastDash4State = DashSwitch4
+
 ;---------------- BMS controlled Main contactor control ------------------
 	voltage_difference = Capacitor_voltage - MTD2_output
 	if((main_state = 5) and ((voltage_difference < 3*64) or (voltage_difference > -3*64))) ; If main is closed and volts front and back are within 3
