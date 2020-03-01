@@ -174,64 +174,7 @@ automate_filter(FLT1, @Mapped_Brake, 100, 0, 50)
 setup_delay(DLY2, 1400)
 
 ;------------ Setup mailboxes ----------------------------
-disable_mailbox(packControl)
 Shutdown_CAN_Cyclic()
-
-Setup_Mailbox(packControl, 0, 0, 0x506, C_CYCLIC, C_XMT, 0, 0)
-Setup_Mailbox_Data(packControl,8,
-					@BMSNode,	  		
-                    @BMSControlLow,
-					@BMSControlHigh,			 
-					@BMSNumberNodes,	 
-					@BMSModelYear,		  
-					0,	 
-					0,	   
-					0)	
-;enable_mailbox(packControl)
-
-Setup_Mailbox(packStatus, 0, 0, 0x188, C_EVENT, C_RCV, 0, 0)
-Setup_Mailbox_Data(packStatus,8,
-					@SOCpercent,
-					0,
-					0,
-					0,
-					0,
-					0,
-					@BalanceDelta,
-					0)
-					
-Setup_Mailbox(packActiveData, 0, 0, 0x408, C_EVENT, C_RCV, 0, 0)
-Setup_Mailbox_Data(packActiveData, 8,
-					0,
-					@HighestPackTemp,
-					0,
-					@DischargeAmps,
-					@DischargeAmps+USEHB,
-					0,
-					0,
-					0)
-
-Setup_Mailbox(packTime, 0, 0, 0x508, C_EVENT, C_RCV, 0, 0)
-Setup_Mailbox_Data(packTime, 8,
-					0,
-					0,
-					0,
-					0,
-					@ChargeCrateLimit,
-					@ChargeCrateLimit+USEHB,
-					@DischargeCrateLimit,
-					@DischargeCrateLimit+USEHB)
-
-Setup_Mailbox(cellVoltage, 0, 0, 0x388, C_EVENT, C_RCV, 0, 0)
-Setup_Mailbox_Data(cellVoltage, 8,
-					0,
-					0,
-					0,
-					0,
-					@VoltageCAN,
-					@VoltageCAN+USEHB,
-					0,
-					0)	
 				
 
 Setup_Mailbox(can18, 0, 0, 0x550, C_CYCLIC, C_XMT, 0, 0)
@@ -265,7 +208,7 @@ Setup_Mailbox_Data(can20,8,
 					@Motor_Temperature+USEHB,			 
 					@Motor_Temperature,	 
 					0,		  
-					asdf0,		  
+					0,		  
 					@Motor_RPM+USEHB,	  		
                     @Motor_RPM)	  
 enable_mailbox(can20)	
