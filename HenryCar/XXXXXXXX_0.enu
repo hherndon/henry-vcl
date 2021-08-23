@@ -1,0 +1,1349 @@
+[PAR_14]
+This parameter determines which control method will be in effect when programming motor response:
+ 
+0 - Speed Mode Express
+1 - Speed Mode
+2 - Torque Mode
+[PAR_16]
+Defines the maximum requested motor rpm at full throttle. Partially applied throttle is scaled proportionately; e.g., 40% applied throttle corresponds to a request for 40% of the set Max Speed Value.
+[PAR_17]
+Determines how aggressively the speed controller attempts to match the speed of the motor to the commanded speed. Larger values provide tighter control.
+ 
+If the gain is set too high, you may experience oscillations as the controller tries to control speed. If it is set too low, the motor may behave sluggishly and be difficult to control.
+[PAR_18]
+The integral term (Ki) forces zero steady state error, so the motor will run at exactly the commanded speed. Larger values provide tighter control.
+ 
+If the gain is set too high, you may experience oscillations as the controller tries to control speed. If it is set too low, the motor may take a long time to approach the exact commanded speed.
+[PAR_19]
+Sets the rate (in seconds) at which the speed command increases when throttle is applied. Larger values represent slower response.
+[PAR_20]
+Sets the rate (in seconds) that is used to slow down the vehicle when throttle is reduced. Larger values represent slower response.
+[PAR_21]
+Sets the rate (in seconds) at which the vehicle slows down when brake is applied or when throttle is applied in the opposite direction. Larger values represent slower response.
+[PAR_22]
+This parameter should be programmed On to operate a pump motor rather than a vehicle drive motor. Speed controller responsiveness, stability, and smoothness are enhanced. This should give a more consistent feel to hydraulic functions regardless of load differences.
+ 
+This parameter should never be set to On for any traction motor applications.
+[PAR_23]
+This parameter works together with Pump Enable as follows:
+ 
+When Pump Enable = On and Regen Lower Enable = On, the pump motor can turn in both the forward and reverse directions. In this case, the pump can be used as the Lower function (reverse).
+ 
+When Pump Enable = On and  Regen Lower Enable = Off, the pump motor can turn only in the forward direction. In this case, a hydraulic valve is typically used for the Lower function.
+ 
+When Pump Enable = Off, the Regen Lower Enable parameter has no effect on the control system.
+[PAR_26]
+Defines the maximum requested motor rpm at full throttle. Partially-applied throttle is scaled proportionately; e.g., 40% applied throttle corresponds to a request for 40% of the set Max Speed Value.
+         
+If Max_Speed_SpdM is set <10 rpm (through VCL or CAN), the throttle request is zeroed.
+Note: The maximum 
+motor rpm is 
+ subject to constraints outlined in the manual (see Motor Speed Constraints).
+[PAR_27]
+Determines how aggressively the speed controller attempts to match the speed of the motor to the commanded speed. Larger values provide tighter control.
+ 
+If the gain is set too high, you may experience oscillations as the controller tries to control speed. If it is set too low, the motor may behave sluggishly and be difficult to control.
+[PAR_28]
+The Ki LS parameter sets the Ki for low vehicle speeds. The integral term (Ki) forces zero steady state error, so the motor will run at exactly the commanded speed. Larger values provide tighter control.
+ 
+If the gain is set too high, you may experience oscillations as the controller tries to control speed. If it is set too low, the motor may take a long time to approach the exact commanded speed.
+[PAR_29]
+The Ki HS parameter sets the integral term (Ki) for high vehicle speeds; see description of Ki LS.
+[PAR_30]
+The Max Speed Overshoot Control parameter helps reduce overshoot of Max Speed, especially on flat ground.
+[PAR_31]
+Defines the maximum difference allowed between the commanded motor speed trajectory and the actual motor RPM. The difference can be seen in the monitor variable Following Error.
+ 
+If Control Mode Select = 0 or 1 (Speed Mode Express or Speed Mode) and the programmed Following Error Limit is exceeded for the programmed Following Error Time, a Following Error Fault is issued.
+[PAR_32]
+Defines the acceleration tolerance of the following error fault in rpm/second. If the following error is outside the limit but is decreasing by this amount or more it will be deemed acceptable and no fault will be generated.
+[PAR_33]
+Defines how long the Following Error can exceed the Following Error Limit before a Following Error Fault is issued.
+ 
+Following Error Time must be set long enough for the motor speed to decelerate and accelerate to maximum speed in the opposite direction during a direction reversal under the worst case conditions.
+[PAR_35]
+This velocity feedforward term is designed to improve throttle responsiveness and speed controller performance, especially at low speeds.
+For traction systems, set it to 50-70% of the current needed to maintain a very low speed, unloaded, on flat ground.
+ 
+For a pump system, set it to the lowest load current (i.e., the current running at the minimum load). Alternatively, the responsiveness of a pump speed control loop can be significantly enhanced by using a VCL program to continuously update this parameter to the appropriate value as each pump load is requested.
+[PAR_36]
+Determines how fast the Kvff term builds up.
+For traction systems, if you feel or hear the mechanical slop pick up abruptly when you move the throttle from neutral to a very small value, slowing the build rate (i.e., setting it to a higher value) will soften the feel.
+ 
+For a pump system, start with this parameter at the minimum setting. Slowing it down (i.e., setting it to a higher value) will reduce speed over-shoot if too much feedforward has been commanded.
+[PAR_37]
+Determines how fast the Kvff term releases. If the release seems too abrupt, slowing the release rate (i.e., setting it to a higher value) will soften the feel. It should be set fast enough (i.e., at a low enough value) to prevent the vehicle from running on after throttle release.
+[PAR_39]
+This acceleration feedforward term is designed to improve throttle  responsiveness and speed controller performance at all speeds. It can be thought of as a <b>quick start</b> function which can enhance responsiveness at all speeds.
+ 
+Using your present accel and decel rates, observe the average current you are running at full throttle at low speeds while accelerating without load on flat ground, and set Kaff to 50-70% of that value.
+ 
+Note: If any accel rate parameters get changed, this parameter will need to be changed also.
+[PAR_40]
+This braking feedforward term is designed to improve braking responsiveness at all speeds.
+ 
+Using your present decel rates, observe the average current you are running at full throttle braking, and set Kbff to that value.
+[PAR_42]
+Determines how fast the Kaff and Kbff terms build up.
+ 
+For traction systems, if you feel or hear the mechanical slop pick up abruptly when you move the throttle from neutral to a very small value, slowing the build rate (i.e., setting it to a higher value) will soften the feel.
+ 
+For a pump system, start with this parameter at the minimum setting. Slowing it down (i.e., setting it to a higher value) will reduce speed over-shoot if too much feedforward has been commanded.
+[PAR_43]
+Determines how fast the Kaff and Kbff terms release. It should be set fast enough (i.e., at a low enough value) to prevent the vehicle from running on after throttle release.
+[PAR_45]
+Sets the rate (in seconds) at which the speed command increases when full throttle is applied at high vehicle speeds. Larger values represent slower response.
+[PAR_46]
+Sets the rate (in seconds) at which the speed command increases when full throttle is applied at low vehicle speeds.
+[PAR_47]
+Sets the rate (in seconds) at which the speed command increases when a small amount of throttle is applied. This rate is typically adjusted to affect low speed maneuverability.
+[PAR_48]
+Sets the rate (in seconds) that is used to slow down the vehicle when the throttle is released to neutral at high vehicle speeds.
+[PAR_49]
+Sets the rate (in seconds) that is used to slow down the vehicle when the throttle is released to neutral at slow vehicle speeds.
+[PAR_50]
+Sets the rate (in seconds) at which the vehicle slows down from high speeds when full brake is applied or when full throttle is applied in the opposite direction.
+[PAR_51]
+Sets the rate (in seconds) at which the vehicle slows down from low speeds when full brake is applied or when full throttle is applied in the opposite direction.
+[PAR_52]
+Sets the rate (in seconds) at which the vehicle slows down at all speeds when a small amount of brake is applied or when a small amount of throttle is applied in the opposite direction.
+[PAR_54]
+Sets the rate (in seconds) that is used to slow down the vehicle when the throttle is reduced without being released to neutral. Larger values represent slower response.
+[PAR_55]
+Sets the percentage of the Typical Max Speed above which the <b>HS</b> parameters will be used.
+[PAR_56]
+Sets the percentage of the Typical Max Speed below which the <b>LS</b> parameters will be used.
+[PAR_57]
+Larger values create a softer reversal from regen braking to drive when near zero speed. This helps soften the transition when the regen and drive current limits are set to different values.
+[PAR_58]
+In some applications, the Max Speed value is changed frequently, through VCL or over the CAN bus. The Max Speed Accel parameter controls the rate at which the maximum speed setpoint is allowed to change when the value of Max Speed is raised. The rate set by this parameter is the time to ramp from 0 rpm to Typical Max Speed rpm.
+ 
+For example, suppose Max Speed is raised from 1000 rpm to 4000 rpm. If Typical Max Speed is 5000 rpm and the rate is 10.0 seconds, it will take 10.0 * (4000-1000) / 5000 = 6.0 seconds to ramp from 1000 rpm to 4000 rpm.
+[PAR_59]
+This parameter works like the Max Speed Accel parameter, except that it controls the rate at which the maximum speed setpoint is allowed to change when the value of Max Speed is lowered.
+ 
+For example, suppose you change Max Speed from 4500 rpm to 2500 rpm. If Typical Max Speed is 5000 rpm, and the rate is 5.0 seconds, it will take 5.0 * (4500-2500) / 5000 = 2.0 seconds to ramp from 4500 rpm to 2500 rpm.
+[PAR_60]
+Controls the ramp rate of speed trajectory to motor speed. A faster decel rate will be used until the trajectory crosses the motor speed. A larger value of this parameter wil provide a smoother feel but may impact brake distance.
+[PAR_62]
+Controls the ramp rate of speed trajectory to motor speed. A faster decel rate will be used until the trajectory crosses the motor speed. A larger value of this parameter wil provide a smoother feel but may impact brake distance.
+[PAR_63]
+Sets the rate (in seconds) that is used to force the Speed Trajectory to follow the motor speed when the throttle is released to neutral and drive torque is present.  This is the mechanism the prevents a vehicle from pushing up a ramp when throttle is released and Neutral Decel times are long.
+[PAR_65]
+Increases torque when on a steep hill in order to limit roll-forward speed. Setting this parameter too high may cause oscillations in the motor as it attempts to limit the roll-forward speed.
+[PAR_66]
+Increases torque when on a steep hill in order to limit roll-back speed. Setting this parameter too high may cause oscillations in the motor as it attempts to limit the roll-back speed.
+[PAR_67]
+Defines the speed below which a much slower decel rate is used. A setting of zero disables the function. Note: This parameter works only in Speed Mode and Speed Mode Express.
+ 
+Soft Stop Speed is useful for vehicles that have fast deceleration and vehicles operating on ramps using the Position Hold function.
+ 
+With vehicles that have fast deceleration, the driver may find the final speed reduction to zero rpm uncomfortable; the vehicle may even rock back as a result of tire wind-up. Soft Stop Speed allows the vehicle to slow at the same fast rate until it reaches the set threshold, at which point it changes to a slower (softer) deceleration rate. However, if the threshold is set too high, the vehicle will feel like it is <b>running on.</b>
+ 
+When throttle is released on a ramp, the vehicle may roll back before Position Hold takes control. Soft Speed Stop can be used to reduce the amount of rollback, but should not be set so high the vehicle drives up the ramp after the throttle is released.
+[PAR_69]
+Allows the Position Hold mode to be entered at zero throttle when the vehicle comes to a stop.
+ 
+Note: EM Brake Type = 2 also enables the Position Hold function.
+[PAR_71]
+This parameter plus the Set Speed Settling Time parameter together set the maximum time the vehicle will stay in Position Hold before releasing the hold and going into Restraint mode. Setting the parameter to zero disables this timeout function, which means the Position Hold will be held. Activating the interlock resets the timer.
+[PAR_72]
+Determines the stiffness with which position is regulated when in Position Hold mode. High Kp will produce less rollback on a ramp, but more bouncing. Too much Kp will cause instability.
+[PAR_73]
+Determines the damping in Position Hold mode. Some damping must be present in the control system to keep the vehicle from oscillating slowly (bouncing). High Kd will improve the dynamic response of the Position Hold controller, but too much Kd will cause fast instability.
+[PAR_74]
+Determines the ramp rate used, below Soft Stop Speed, to drive the Speed Trajectory to 0 RPM.  The controller is allowed to produce drive torque when this function is active.
+[PAR_75]
+Determines the speed below which the EM brake will be commanded to set. Setting this speed too high may cause a jerky stop when the EM brake sets and stops the motor.
+[PAR_76]
+Determines how long motor speed must be below Zero_Speed_Threshold to declare zero speed.
+[PAR_77]
+Determines how long the position hold function is allowed to operate before the EM brake is set. This time should be set long enough for the position hold to settle.
+[PAR_78]
+When the vehicle transitions from forward speed to reverse speed or from reverse speed to forward speed (for example, when coming to a stop going up a steep ramp), Position Hold is automatically entered immediately at zero speed, regardless of this parameter.
+ 
+This parameter applies when the vehicle needs to be brought to a stop without the assistance of gravity (for example, when moving forward down a ramp). This rate determines how quickly zero speed is attained after the ramped speed request reaches zero. Setting this parameter too high will make the stop seem very abrupt, and may even cause the vehicle to roll back slightly. When the parameter is set lower, the vehicle take longer to come to a stop and enter Position Hold mode.
+[PAR_79]
+This function is applicable only when the Torque Preload function has been disabled, or its timer has expired. It introduces a proportional feedforward term into the speed controller based on the position signal. For example, suppose the vehicle is on a ramp and a forward throttle request is given such that the vehicle rolls back slightly before climbing the ramp (again, assuming the torque preload function is inactive). As the vehicle rolls back a feedforward torque term proportional to the rollback position will be added to the torque request until forward speed is sensed.
+[PAR_80]
+Allows the Position Hold mode to perform a one-time, ramped release of of the initial torque when entering position hold.
+[PAR_91]
+This parameter should be programmed On to operate a pump motor rather than a vehicle drive motor. Speed controller responsiveness, stability, and smoothness are enhanced. This should give a more consistent feel to hydraulic functions regardless of load differences.
+ 
+This parameter should never be set to On for any traction motor applications.
+[PAR_92]
+This parameter works together with Pump Enable as follows:
+ 
+When Pump Enable = On and Regen Lower Enable = On, the pump motor can turn in both the forward and reverse directions. In this case, the pump can be used as the Lower function (reverse).
+ 
+When Pump Enable = On and Regen Lower Enable = Off, the pump motor can turn only in the forward direction. In this case, a hydraulic valve is typically used for the Lower function.
+ 
+When Pump Enable = Off, the Regen Lower Enable parameter has no effect on the control system.
+[PAR_95]
+Defines the maximum allowed motor rpm for torque control mode (independent of throttle position). In torque control mode, full throttle requests 100% of the available torque. Partially-applied throttle is scaled proportionately; e.g., 40% applied throttle corresponds to a request for 40% of the available torque.
+[PAR_96]
+Determines how aggressively the speed controller attempts to limit the speed of the motor to Max Speed. Larger values provide tighter control. If Kp is set too high, you may experience oscillations as the controller tries to control speed. Setting Kp too low may result in a top speed much higher than Max Speed.
+[PAR_97]
+The integral term (Ki) forces zero steady state error, so the motor speed will be limited to Max Speed. Larger values provide faster control. If the gain is set too high, you may experience oscillations as the control-ler tries to limit speed. If it is set too low, it may take a long time for the motor to approach Max Speed from overspeed.
+[PAR_98]
+Provides damping as the vehicle approaches top speed, thereby reducing overshoot. If Kd is set too high, the vehicle may take too long to reach top speed. If Kd is set too low, the vehicle may overshoot top speed, especially when traveling downhill.
+[PAR_100]
+Sets the rate (in seconds) at which the motor torque increases to full when full throttle is applied. Larger values represent slower response.
+[PAR_101]
+Determines how quickly deceleration will be initiated when the throttle is released while the vehicle is still accelerating. If the release rate is fast (i.e., set to a low value), the transition is initiated abruptly. The transition is smoother if the release rate is set to a higher value (slower transition); however, setting the rate too high can cause the vehicle to feel uncontrollable when the throttle is released, as it will continue to drive for a short time.
+[PAR_102]
+Adjusts the rate (in seconds) at which braking torque builds as the vehicle transitions from drive to braking when direction is reversed, the brake pedal is applied, or neutral braking begins. Lower values represent faster times and therefore faster braking; gentler braking is achieved by setting the braking rate to a higher value.
+[PAR_103]
+Adjusts the rate (in seconds) at which braking torque releases as the vehicle transitions from braking to drive.
+[PAR_104]
+Neutral braking occurs progressively when the throttle is reduced toward the neutral position or when no direction is selected. The neutral braking parameter is adjustable from 0 to 100% of the regen current limit.
+[PAR_105]
+Determines the motor speed below which neutral braking current is adjusted when throttle is reduced. The neutral braking current is linearly reduced from Neutral Braking * Regen Current Limit at the Neutral Taper Speed to the Creep Torque current at zero rpm motor speed.
+ 
+Note: Setting the taper speed too low may cause oscillations in the motor.
+[PAR_106]
+Sets the speed point at which the full regen current will be applied to restrain the vehicle from rolling forward.
+ 
+Although this speed is never actually reached, it does set the slope of the restraint strength and can be thought of as a gain. Setting this parameter too low can cause oscillations.
+[PAR_107]
+Sets the speed point at which the full regen current will be applied to restrain the vehicle from rolling in reverse (backward).
+ 
+Although this speed is never actually reached, it does set the slope of the restraint strength and can be thought of as a gain. Setting this parameter too low can cause oscillations.
+[PAR_109]
+Determines the amount of torque applied to the vehicle at a stop with no throttle input, to emulate the feel of an automatic transmission automobile.
+ 
+<b>WARNING!</b> When interlock is engaged, creep torque allows vehicle propulsion if a direction is selected even though no throttle is applied. Care should be taken when setting up this parameter.
+ 
+If pedal braking is enabled, creep torque is progressively disabled as brake is applied so as to prevent the motor from driving into the brakes and thus wasting energy.
+ 
+Creep Torque and Neutral Taper Speed interact to create the slope of the torque response as the vehicle approaches zero speed. If the vehicle oscillates as it coasts down toward zero speed, try lowering Creep Torque or increasing Neutral Taper Speed.
+[PAR_110]
+Determines the amount of brake pedal input that will fully cancel the creep torque. Amount of cancellation is proportional to the brake input.
+[PAR_111]
+Determines how fast the programmed creep torque builds when a direction is selected.
+[PAR_112]
+Determines how fast the programmed creep torque releases when the brake is cancelling the creep torque or when the direction switches are cleared (neutral).
+[PAR_114]
+Adjusts the throttle take-up from linear (0% setting) to an S curve. Larger values create softer throttle take-up, in forward and reverse. Softening is progressively reduced at higher speeds.
+[PAR_115]
+Determines the motor speed below which the maximum braking current is linearly reduced from 100% to 0% at zero speed.
+ 
+Setting the taper speed too low for the braking current will cause oscillations in the motor as it attempts to brake the vehicle to a stop on very steep slopes.
+ 
+Taper speed is applicable only in response to brake pedal input; it does not affect direction reversal braking or neutral braking.
+ 
+If the vehicle is in restraint when the brake is pressed, the applied braking torque is affected by both Brake Taper Speed and Forward (or Back) Full Restraint Speed. If the vehicle oscillates in this mode, it may be necessary to increase one or more of these parameters.
+[PAR_116]
+Larger values create a softer reversal from regen braking to drive when near zero speed. This helps soften the transition when the regen and drive current limits are set to different values.
+ 
+Note: This parameter is not mode-specific.
+[PAR_117]
+In some applications, the Max Speed value is changed frequently, through VCL or over the CAN bus. The Max Speed Accel parameter controls the rate at which the maximum speed setpoint is allowed to change when the value of Max Speed is lowered. The rate set by this parameter is the time to ramp from Typical Max Speed rpm to 0 rpm.
+ 
+For example, suppose you change Max Speed from 3000 rpm to 1000 rpm. If Typical Max Speed is 5000 rpm, and the rate is 5.0 seconds, it will take 5.0 * (3000-1000) / 5000 = 2.0 seconds to ramp from 3000 rpm to 1000 rpm.
+[PAR_121]
+Controls the time for the initial voltage based control mode to minimize rollback. Should be set as short as possible but long enough so initial transients have stabilized. Must be less than position hold timeout time.
+[PAR_127]
+Sets the maximum RMS current the controller will supply to the motor during drive operation, as a percentage of the controller's full rated current.
+Note: Reducing this value will reduce the maximum drive torque.
+[PAR_128]
+Sets the maximum RMS regen current, as a percentage of the controller's full rated current.
+Note: The regen current limit applies during neutral braking, direction reversal braking, and speed limiting when traveling downhill.
+[PAR_129]
+Sets the maximum RMS regen current during braking when a brake command is given, as a percentage of the controller's full rated current.
+ 
+Note: Typically the brake current limit is set equal to the regen current limit.  The brake current limit overrides the regen current limit when the brake input is active.
+[PAR_130]
+Sets the maximum RMS current allowed for braking and drive when in emergency reverse. The emergency reverse current limit is a percentage of the controller's full rated current.
+[PAR_131]
+Sets the maximum RMS regen current during interlock braking, as a percentage of the controller's full rated current.
+[PAR_133]
+Sets the base speed that will be used in the drive limiting map and regen limiting map.
+[PAR_134]
+Sets the width of the delta increment that will be used in the drive limiting map and regen limiting map.
+[PAR_136]
+These parameters define the percentage of drive current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The resulting map allows the controller to reduce the drive current as a function of speed. Reducing the power requirements at certain speeds restricts performance. This can be useful for reducing motor heating. It can also be used to keep consistent vehicle power with changing battery state-of-charge.
+[PAR_137]
+These parameters define the percentage of drive current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The resulting map allows the controller to reduce the drive current as a function of speed. Reducing the power requirements at certain speeds restricts performance. This can be useful for reducing motor heating. It can also be used to keep consistent vehicle power with changing battery state-of-charge.
+[PAR_138]
+These parameters define the percentage of drive current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The resulting map allows the controller to reduce the drive current as a function of speed. Reducing the power requirements at certain speeds restricts performance. This can be useful for reducing motor heating. It can also be used to keep consistent vehicle power with changing battery state-of-charge.
+[PAR_139]
+These parameters define the percentage of drive current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The resulting map allows the controller to reduce the drive current as a function of speed. Reducing the power requirements at certain speeds restricts performance. This can be useful for reducing motor heating. It can also be used to keep consistent vehicle power with changing battery state-of-charge.
+[PAR_140]
+These parameters define the percentage of drive current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The resulting map allows the controller to reduce the drive current as a function of speed. Reducing the power requirements at certain speeds restricts performance. This can be useful for reducing motor heating. It can also be used to keep consistent vehicle power with changing battery state-of-charge.
+[PAR_142]
+These parameters define the percentage of regen current limit or braking current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The curve can be shaped to limit the available torque at various speeds. One possible use is to compensate for the torque-speed characteristic of the motor.
+[PAR_143]
+These parameters define the percentage of regen current limit or braking current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The curve can be shaped to limit the available torque at various speeds. One possible use is to compensate for the torque-speed characteristic of the motor.
+[PAR_144]
+These parameters define the percentage of regen current limit or braking current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The curve can be shaped to limit the available torque at various speeds. One possible use is to compensate for the torque-speed characteristic of the motor.
+[PAR_145]
+These parameters define the percentage of regen current limit or braking current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The curve can be shaped to limit the available torque at various speeds. One possible use is to compensate for the torque-speed characteristic of the motor.
+[PAR_146]
+These parameters define the percentage of regen current limit or braking current limit that will be applied at the speeds defined by the nominal speed and delta speed parameters. The curve can be shaped to limit the available torque at various speeds. One possible use is to compensate for the torque-speed characteristic of the motor.
+[PAR_148]
+The 1232E/34E/36E/38E controllers accept a variety of throttle inputs. The throttle type parameter can be programmed as follows:
+ 
+1 - 2-wire rheostat, 5kohm-0 input
+2 - Single-ended 3-wire 1k-10kohm potentiometer, or 0-5V voltage source
+3 - 2-wire rheostat, 0-5kohm input
+4 - Wigwag 3-wire 1k-10kohm potentiometer, or 0-5V voltage source
+5 - VCL input (VCL_Throttle)
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+[PAR_149]
+Defines the wiper voltage at the throttle deadband threshold. Increasing the throttle deadband setting will increase the neutral range. This parameter is especially useful with throttle assemblies that do not reliably return to a well-defined neutral point, because it allows the deadband to be defined wide enough to ensure that the controller goes into neutral when the throttle mechanism is released.
+[PAR_150]
+Modifies the vehicle's response to the throttle input. Setting the throttle map at 50% provides a linear output response to throttle position. Values below 50% reduce the controller output at low throttle settings, providing enhanced slow speed maneuverability. Values above 50% give the vehicle a faster, more responsive feel at low throttle settings.
+ 
+The map value is the percentage of controller output at half throttle ((deadband + max)/2).
+[PAR_151]
+Defines the wiper voltage required to produce 100% controller output. Decreasing the throttle max setting reduces the wiper voltage and therefore the full stroke necessary to produce full controller output.  This parameter allows reduced-range throttle assemblies to be  accommodated.
+[PAR_152]
+Defines the initial controller output generated when the throttle is first rotated out of the neutral deadband. For most vehicles, a setting of 0 is appropriate. For heavy vehicles, however, increasing the offset may improve controllability by reducing the amount of throttle required to start the vehicle moving.
+[PAR_153]
+The four Throttle Reverse parameters are the same as their Throttle Forward counterparts, and apply when throttle direction is reversed.
+[PAR_154]
+The four Throttle Reverse parameters are the same as their Throttle Forward counterparts, and apply when throttle direction is reversed.
+[PAR_155]
+The four Throttle Reverse parameters are the same as their Throttle Forward counterparts, and apply when throttle direction is reversed.
+[PAR_156]
+The four Throttle Reverse parameters are the same as their Throttle Forward counterparts, and apply when throttle direction is reversed.
+[PAR_157]
+Sets the low pass filter cutoff frequency for the throttle pot wiper input. Higher values will make the throttle more responsive to quick changes. Lower values will make the throttle less responsive to electrical noise.
+[PAR_158]
+Sets the amount of time the controller will ignore throttle commands after a direction reversal. This timer is reset each 0 crossing in the event of multiple bounces.
+[PAR_159]
+Sets the amount of max throttle command that will be recognized by the debounce filter as a real command. Any throttle above this in the reverse direction will override the debounce filter.
+[PAR_160]
+Determines the type of HPD (High Pedal Disable) and SRO (Static Return to Off) protection. One type of checks is available for material-handling vehicles, and two types for golf-style vehicles.
+ 
+Note: If any of the HPD/SRO checks finds an input sequencing problem, an HPD/Sequencing Fault (flash code 47) is set.
+ 
+0 - HPD SRO feature is disabled.
+ 
+1 - HPD SRO enabled for material-handling vehicles:
+ 
+HPD: If throttle input is received before interlock input.
+SRO: If direction input is received before interlock input.
+ 
+The HPD SRO check is made when the interlock input changes from Off to On. If the throttle input >25% or a direction input is On, an HPD/Sequencing Fault is set.
+ 
+The HPD/Sequencing Fault is cleared by returning the throttle input to <25% and the direction inputs to Off.
+ 
+2 - Golf-style HPD that allows direction reversal while driving:
+ 
+HPD: If throttle input is received before interlock or direction input while vehicle is stationary.
+SRO: None.
+ 
+The HPD check is made when the interlock input or direction inputs are Off and the vehicle is stationary. If the throttle input >25%, an HPD/Sequencing Fault is set.
+ 
+No SRO check is made with this type, so the order of the interlock and direction inputs does not matter.
+ 
+The HPD/Sequencing Fault is cleared by returning the throttle input to <25% and the direction inputs to Off.
+ 
+3 - Golf-style HPD that prevents direction reversal while driving:
+ 
+HPD: If throttle input is received before interlock or direction input.
+SRO: None
+ 
+HPD check is made when the interlock input or direction inputs are Off. If the throttle input >25%, an HPD/Sequencing Fault is set. The check is done regardless of vehicle speed, so reversing direction with throttle input >25% will result in a fault.
+ 
+No SRO check is made with this type, so the order of the interlock and direction inputs does not matter.
+ 
+The HPD/Sequencing Fault is cleared by returning the throttle input to <25% and the direction inputs to Off.
+[PAR_161]
+Typically the sequencing delay feature allows the interlock switch to be cycled within a set time (the defined sequencing delay), thus preventing inadvertent activation of HPD/SRO. This feature is especially useful in applications where the interlock switch may bounce or be momentarily cycled during operation.
+[PAR_162]
+When programmed On, the throttle processing with fault detection will operate normally; however, the throttle command will require VCL to define the connection between the OS_Throttle and VCL_Throttle variables. This allows VCL flexibility and customization of throttle processing, while still allowing Throttle_Type 1-4 with throttle fault detection.
+[PAR_164]
+Determines whether the brake input and algorithm are enabled, making the brake throttle part of the motor control command.
+[PAR_165]
+The 1232E/34E/36E/38E controllers accept a variety of brake inputs. The brake type parameter can be programmed as follows:
+ 
+1 - 2-wire rheostat, 5kohm-0 input
+2 - Single-ended 3-wire 1k-10kohm potentiometer, 0-5V voltage source, or current source
+3 - 2-wire rheostat, 0-5kohm input
+4 - Not applicable
+5 - VCL input (VCL_Brake)
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+[PAR_166]
+The four Brake throttle adjustment parameters are the same as their Drive throttle counterparts.
+[PAR_167]
+The four Brake throttle adjustment parameters are the same as their Drive throttle counterparts.
+[PAR_168]
+The four Brake throttle adjustment parameters are the same as their Drive throttle counterparts.
+[PAR_169]
+The four Brake throttle adjustment parameters are the same as their Drive throttle counterparts.
+[PAR_170]
+Sets the low pass filter cutoff frequency for the pot2 wiper input. Higher values will make the brake more responsive to quick changes. Lower values will make the brake less responsive to electrical noise.
+[PAR_171]
+When programmed On, the brake processing with fault detection will operate normally; however, the brake command will require VCL to define the connection between the OS_Brake and VCL_Brake variables. This allows VCL flexibility and customization of throttle processing, while still allowing Brake_Type 1-3 with brake fault detection.
+[PAR_173]
+The brake type parameter determines how the EM brake responds to the interlock input, throttle, and vehicle motor speed.
+ 
+0 - EM brake function disabled. The EM brake driver (PWM2) is released to general I/O use with VCL.
+ 
+1 - EM brake controlled by interlock. The controller will command the EM brake to release whenever the interlock is closed (Interlock =  On). If interlock braking is enabled and the interlock opens when the vehicle is moving at motor speed greater than EM_Brake_Set_Speed_Threshold, the controller will brake the vehicle to a stop (with interlock braking) and then command the EM brake to set. If the vehicle motor speed is less than this threshold, the EM brake will engage after the Sequencing_Delay has expired. If interlock braking is disabled, the EM brake will engage after the Sequencing_Delay has expired.
+ 
+2 - EM brake controlled by interlock and neutral. The controller will command the EM brake to set whenever the throttle command is zero and motor speed is less than EM_Brake_Set_Speed_Threshold. Position Hold will be enabled automatically.
+[PAR_174]
+The EM brake pull-in voltage allows a high initial voltage when the EM brake first turns on, to ensure brake release. After 1 second, this peak voltage drops to the EM brake holding voltage.
+ 
+Note: The Battery Voltage Compensated parameter controls whether the pull-in and holding voltages are battery voltage compensated.
+[PAR_175]
+The EM brake holding voltage allows a reduced average voltage to be applied to the brake coil once the brake has been released. This parameter must be set high enough to hold the brake released under all shock and vibration conditions the vehicle will be subjected to.
+ 
+Note: The Battery Voltage Compensated parameter controls whether the pull-in and holding voltages are battery voltage compensated.
+[PAR_176]
+This parameter determines whether the EM brake pull-in and holding voltages are battery voltage compensated. When set On, the pull-in and holding voltages are compensated relative to the set Nominal Voltage. In other words, the output voltage is adjusted to compensate for swings in battery voltage, so the percentage is relative to the set Nominal Voltage, not to the actual voltage.
+ 
+For example, suppose Nominal Voltage is set to 48V and Holding Voltage is set to 75% (36V) to the output driver. Now suppose the bus voltage dips to 40V. If Battery Voltage Compensated = On, the output will still be 36V (Nominal Voltage x Holding Voltage) to the coil. If Battery Voltage Compensated = Off, the output will be 30V (Actual Voltage x Holding Voltage) to the coil.
+[PAR_177]
+When programmed On, the controller's operating system will drop the electromagnetic brake when a fault occurs that has a fault action of ShutdownEMBrake.
+[PAR_178]
+Determines the speed below which the EM brake will be commanded to set. Setting this speed too high may cause a jerky stop when the EM brake sets and stops the motor.
+[PAR_179]
+Determines how long the position hold function is allowed to operate before the EM brake is set. This time should be set long enough for the position hold to settle.
+[PAR_180]
+Determines how long the position hold function is allowed to operate before the EM brake is set. This time should be set long enough for the position hold to settle.
+[PAR_181]
+Estimated time for the EM brake to physically set after the holding voltage is released. This determines how long the controller waits, after removing voltage from the brake, before released the torque.  This should be set longer than the actual brake setting time to ensure the vehicle doesn't move before the brake fully engages.
+[PAR_182]
+Time to release torque after EM Brake has set and motor has stopped (EMBrakeEngagedAndStopped state).
+[PAR_183]
+Estimated time for the EM brake to physically release after the pull-in voltage is applied. This is used to ensure the position hold torque buildup is complete before the brake releases. When set too low, the vehicle may experience rollback on EM brake release.
+[PAR_184]
+Estimated worst-case time to build up the torque required to hold the vehicle stationary on a hill prior to EM brake release. This is used in conjunction with Release Delay to determine when to release the brake and allow the speed request to slew away from zero.
+[PAR_185]
+When enabled, this function eliminates rollback when the throttle is re-engaged on a ramp by forcing the vehicle to first enter position-hold before setting the EM brake, and then remembering the amount of torque that was necessary to hold it on the ramp. When throttle is re-engaged, this value is loaded in the motor before the EM brake is released. The torque value is cleared automatically when KSI power is cycled.
+ 
+Off = When a valid throttle input is received, the speed controller will start with no torque preload as soon as the Release Delay expires. This will allow some rollback when the EM brake releases.
+ 
+On = When a valid throttle input is received, the speed controller will start with a pre-set torque as measured by position-hold when the vehicle came to a stop.
+[PAR_186]
+When enabled, this function saves torque preload in non-volatile memory so that it remains after a power cycle.
+[PAR_187]
+The timer starts after the EM brake is set. If the timer expires before the throttle is re-engaged, the torque preload memory will be cleared. Setting this parameter to zero disables the timer, i.e., the preload is never cancelled. The purpose of this delay is to prevent the vehicle from lunging forward if it is unloaded on a hill such that the torque measured by position-hold is no longer valid.
+ 
+Note: This parameter is applicable only when Torque Preload Enable = On
+[PAR_189]
+Defines the allowable number of motor revolutions after the EM brake is set before an EM Brake Failed to Set fault is issued (fault code 92).
+[PAR_192]
+When programmed On, the controller's native software controls the main contactor when the interlock is enabled; when programmed Off, the contactor is controlled by VCL.
+ 
+Note: With Main Enable programmed Off, the controller will not be able to open the main contactor in serious fault conditions and the system will therefore not meet EEC safety requirements.
+[PAR_195]
+When set to 0, the main contactor and interlock each work as determined by their respective parameters.
+ 
+When set to 1, the main contactor will pull in with KSI (like a Type 2 interlock) but the interlock enables/disables drive and engages interlock braking (like a Type 0 or Type 1 interlock).
+[PAR_196]
+The main contactor pull-in voltage parameter allows a high initial voltage when the main contactor driver first turns on, to ensure contactor closure. After 1 second, this peak voltage drops to the contactor holding voltage.
+ 
+Note: The Battery Voltage Compensated parameter (below) controls whether the pull-in and holding voltages are battery voltage compensated.
+[PAR_197]
+The main contactor holding voltage parameter allows a reduced average voltage to be applied to the contactor coil once it has closed. This parameter must be set high enough to hold the contactor closed under all shock and vibration conditions the vehicle will be subjected to.
+ 
+Note: The Battery Voltage Compensated parameter (below) controls whether the pull-in and holding voltages are battery voltage compensated.
+[PAR_198]
+This parameter determines whether the main pull-in and holding voltages are battery voltage compensated. When set On, the pull-in and holding voltages are set relative to the set Nominal Voltage. In other words, the output voltage is adjusted to compensate for swings in battery voltage, so the percentage is relative to the set Nominal Voltage, not to the actual voltage.
+ 
+For example, suppose Nominal Voltage is set to 48V and Holding Voltage is set to 75% (36V) to the output driver. Now suppose the bus voltage dips to 40V. If Battery Voltage Compensated = On, the output will still be 36V (Nominal Voltage x Holding Voltage) to the coil. If Battery Volt-age Compensated = Off, the output will be 30V (Actual Voltage x Holding Voltage) to the coil.
+[PAR_199]
+Three interlock options are available:
+ 
+0 = interlock turns on with switch 3.
+1 = interlock controlled by VCL functions.
+2 = interlock turns on with KSI.
+[PAR_200]
+Applicable only when Interlock Type = 0 or 1. The delay can be set to allow the contactor to remain closed for a period of time (the delay) after the interlock switch is opened. The delay is useful for preventing unnecessary cycling of the contactor and for maintaining power to auxiliary functions that may be used for a short time after the interlock switch has opened.
+[PAR_201]
+When programmed On, the controller performs a test to make sure the main contactor is open (not welded shut) before it is commanded to close. This test is not performed if this parameter is Off. The main contactor driver, however, is always protected from short circuits.
+[PAR_202]
+When programmed On, the controller performs a test immediately after the main contactor is commanded to close, to make sure the contactor has in fact closed. The test is not performed if this parameter is programmed Off. The main contactor driver, however, is always protected from short circuits.
+[PAR_203]
+Sets the threshold used for the ongoing check that ensures the main contactor remains closed while in operation. The Main DNC Runtime Threshold is the maximum voltage difference between the Keyswitch and Capacitor voltages. When the voltage difference is above this threshold, and the battery current is low, a Main Did Not Close fault will be set. Setting this parameter lower will increase the sensitivity of the fault detection. Setting this parameter too low may cause false fault trips due to normal voltage drops between the keyswitch and capacitor voltages.
+Setting this parameter = 0 V will disable the Main Did Not Close fault check.
+[PAR_205]
+Turns the precharge feature on and off. Precharge provides a limited current charge of the controller's internal capacitor bank before the main contactor is closed. This decreases the arcing that would otherwise occur when the contactor is closed with the capacitor bank discharged.
+[PAR_210]
+When programmed On, lowering is controlled by negative throttle position.
+ 
+When programmed Off, lowering is controlled by the VCL variable VCL_PD_Throttle.
+[PAR_211]
+The Lower speed is determined by the aperture of the proportional valve. This parameter sets the maximum allowed current through the valve, which in turn defines its aperture.
+ 
+This parameter description assumes the proportional driver is being used to drive a proportional valve, and that the PD current control software is active (PD_Enable = On).
+[PAR_212]
+Sets the minimum allowed current through the proportional valve. Most proportional valves need a non-zero closed current in order to start opening immediately when Lower is requested.
+ 
+This parameter description assumes the proportional driver is being used to drive a proportional valve, and that the PD current control software is active (PD_Enable = On).
+[PAR_213]
+Dither provides a constantly changing current in the coil to produce a rapid back-and-forth motion of the valve; this keeps the valve lubricated and allows low-friction, precise movement. The PD Dither % parameter specifies the amount of dither as a percentage of the PD max current, and is applied in a continuous cycle of add%-subtract%.
+ 
+This parameter description assumes the proportional driver is being used to drive a proportional valve, and that the PD current control software is active (PD_Enable = On).
+[PAR_214]
+Sets the period for proportional valve dither.
+This parameter description assumes the proportional driver is being used to drive a proportional valve, and that the PD current control software is active (PD_Enable = On).
+[PAR_215]
+Sets the proportional gain of the current feedback controller. Higher gains force the control loop to respond quickly but may cause oscillations.
+ 
+This parameter description assumes the proportional driver is being used to drive a proportional valve, and that the PD current control software is active (PD_Enable = On).
+[PAR_216]
+Sets the integral gain of the current feedback controller. Integral gain tries to  force the error to zero. Higher gains force the control loop to respond quickly but may cause oscillations.
+ 
+This parameter description assumes the proportional driver is being used to drive a proportional valve, and that the PD current control software is active (PD_Enable = On).
+[PAR_218]
+When programmed On, VCL functions control Driver 3 as the hydraulic pump contactor.
+ 
+On: The VCL function Start_Pump() will close the pump contactor according to the defined pull-in and holding voltages. The VCL function Stop_Pump() will open the pump contactor.
+ 
+Off: Driver 3 will be available for general VCL usage. Start_Pump() and Stop_Pump() will not have any effect.
+[PAR_219]
+The hydraulic contactor pull-in voltage parameter allows a high initial voltage when the hydraulic contactor driver first turns on, to ensure contactor closure. After 1 second, this peak voltage drops to the contactor holding voltage.
+ 
+Note: This voltage will be battery voltage compensated.
+[PAR_220]
+The hydraulic contactor holding voltage parameter allows a reduced average voltage to be applied to the contactor coil once it has closed. This parameter must be set high enough to hold the contactor closed under all shock and vibration conditions to which the vehicle will be subjected.
+ 
+Note: This voltage will be battery voltage compensated.
+[PAR_222]
+The five Checks Enable parameters are used to enable driver and coil fault detection at the five individual drivers (at Pins  J1-6, J1-5, J1-4, J1-3, and J1-2). When a Checks parameter is enabled, the associated driver, driver wiring, and driver load are checked to verify that the driver correctly drives the load both high and low. The checks will occur regardless of the PWM output of the driver. The checks will detect both open and shorted conditions. When a fault is detected, the controller opens the driver and issues a fault code.
+If nothing is connected to a driver, its Checks Enable parameter should be set to off.
+ 
+Note: Short circuit protection is always active at these five drivers, regardless of how Checks Enable is set.
+[PAR_223]
+The five Checks Enable parameters are used to enable driver and coil fault detection at the five individual drivers (at Pins  J1-6, J1-5, J1-4, J1-3, and J1-2). When a Checks parameter is enabled, the associated driver, driver wiring, and driver load are checked to verify that the driver correctly drives the load both high and low. The checks will occur regardless of the PWM output of the driver. The checks will detect both open and shorted conditions. When a fault is detected, the controller opens the driver and issues a fault code.
+If nothing is connected to a driver, its Checks Enable parameter should be set to off.
+ 
+Note: Short circuit protection is always active at these five drivers, regardless of how Checks Enable is set.
+[PAR_224]
+The five Checks Enable parameters are used to enable driver and coil fault detection at the five individual drivers (at Pins  J1-6, J1-5, J1-4, J1-3, and J1-2). When a Checks parameter is enabled, the associated driver, driver wiring, and driver load are checked to verify that the driver correctly drives the load both high and low. The checks will occur regardless of the PWM output of the driver. The checks will detect both open and shorted conditions. When a fault is detected, the controller opens the driver and issues a fault code.
+If nothing is connected to a driver, its Checks Enable parameter should be set to off.
+ 
+Note: Short circuit protection is always active at these five drivers, regardless of how Checks Enable is set.
+[PAR_225]
+The five Checks Enable parameters are used to enable driver and coil fault detection at the five individual drivers (at Pins  J1-6, J1-5, J1-4, J1-3, and J1-2). When a Checks parameter is enabled, the associated driver, driver wiring, and driver load are checked to verify that the driver correctly drives the load both high and low. The checks will occur regardless of the PWM output of the driver. The checks will detect both open and shorted conditions. When a fault is detected, the controller opens the driver and issues a fault code.
+If nothing is connected to a driver, its Checks Enable parameter should be set to off.
+ 
+Note: Short circuit protection is always active at these five drivers, regardless of how Checks Enable is set.
+[PAR_226]
+The five Checks Enable parameters are used to enable driver and coil fault detection at the five individual drivers (at Pins  J1-6, J1-5, J1-4, J1-3, and J1-2). When a Checks parameter is enabled, the associated driver, driver wiring, and driver load are checked to verify that the driver correctly drives the load both high and low. The checks will occur regardless of the PWM output of the driver. The checks will detect both open and shorted conditions. When a fault is detected, the controller opens the driver and issues a fault code.
+If nothing is connected to a driver, its Checks Enable parameter should be set to off.
+ 
+Note: Short circuit protection is always active at these five drivers, regardless of how Checks Enable is set.
+[PAR_227]
+Sets the upper threshold of the combined current of the 5V and 12V external supplies. Above this threshold a fault will be created that can be read by VCL.
+[PAR_228]
+Sets the lower threshold of the combined current of the 5V and 12V external supplies. Below this threshold a fault will be created that can be read by VCL.
+[PAR_230]
+This single parameter defines the frequency of Drivers 1 through 4.
+[PAR_232]
+Set this parameter to the typical maximum motor speed of the vehicle. This value does not need to be set precisely; an estimate will do. All of the vehicle response rates are normalized to Typical Max Speed.
+ 
+For example, suppose Typical_Max_Speed is fixed at 6000 rpm, and Full_Accel_Rate_LS_SpdM = 3.0 seconds:
+ 
+If Max_Speed_SpdM = 6000 rpm, it will take 3.0 seconds to accelerate from zero to top speed (6000 rpm).
+ 
+If Max_Speed_SpdM = 3000 rpm, it will take 1.5 seconds to accelerate from zero to top speed (3000 rpm).
+ 
+If Max_Speed_SpdM = 1000 rpm, it will take 0.5 seconds to accelerate to accelerate from zero to top speed (1000 rpm).
+[PAR_233]
+Set this parameter to the type of motor in your vehicle:
+ 
+0=ACIM (induction motor)
+ 
+1= PMAC (permanent magnet synchronous motor)
+ 
+Note: A Parameter Mismatch Fault will result unless the Feedback Type matches the Motor Technology setting like so:
+ 
+If Motor Technology = 0 (ACIM), then Feedback Type must = 1 (quadrature encoder).
+ 
+If Motor Technology = 1 (PMAC), Feedback Type must = 2 (sin/cos device).
+[PAR_236]
+Enables ACIM (induction motor) characterization with quadrature encoder to begin once Test Throttle is asserted.
+[PAR_237]
+Begins characterization if a Test Enable asserted.
+<b>IMPORTANT:</b> If motor starts to turn in <b>positive</b> vehicle speed direction, Test Throttle should be set to <b>1</b>.  If <b>negative</b> direction, Test Throttle should be set to <b>-1</b>.
+[PAR_238]
+This parameter is used to select the number of poles before beginning the ACIM motor characterization procedure.
+[PAR_239]
+This parameter is used to set the maximum motor speed allowed during ACIM motor characterization.
+[PAR_240]
+This parameter is used to set the maximum motor current allowed during ACIM motor characterization.
+[PAR_241]
+This parameter is adjusted during ACIM motor characterization to tune the motor to deliver the maximum torque per amp.
+[PAR_243]
+Performs only the current regulator tuning portion of the autocharacterization test.
+[PAR_244]
+Controls the amount of overshoot the current regulator autotune will use.
+[PAR_245]
+Bypasses the CR autotune during motor characeterization.  This should only be done if the autotuning isn't work correctly for a particular motor.  In that case the CR gains need to be determined manually.
+[PAR_247]
+Sets the speed at which modulation depth has reached 100% (all available voltage is used) and where field weakening begins. This parameter is scaled by an internal motor characterization parameter, so the setting of FW Base Speed should always be done using the tuning test, which will take into account the scaling factor. Entering a speed observed from a torque vs. Speed plot should not be done, as this number fails to take into account the internal scaling factor.
+ 
+This parameter needs to be set during initial setup and reset each time the Motor Type or the low speed current limit is changed. For example, if you lower Drive_Current_Limit or PL_Drive_Nominal, you should reset this parameter.
+ 
+To determine the correct value, perform the FW Base Speed tuning test (for traction systems or for hydraulic systems depending on your application).
+[PAR_248]
+Sets the amount of field weakening allowed while driving the motor. Field Weakening Drive will affect efficiency and torque only at speeds above the programmed FW Base Speed. Low settings will result in better efficiency but less torque; higher settings will result in more torque and less efficiency.  A setting of zero will disable field weakening, thus resulting in the highest efficiency and lowest torque above base speed.
+ 
+To keep motor and controller heating to a minimum (high efficiency), Field Weakening Drive should be set just high enough to meet the high speed performance specifications. (Typical high speed performance specifications are maximum drive speed with full load, or maximum lift speed with full load.) The drive current limiting map can also be used to restrict performance at all speeds.
+ 
+The maximum setting of the Field Weakening Drive parameter depends on the type of motor characterization that was used.
+ 
+If the ACIM motor was dyno characterized (i.e., sent to the Curtis factory for characterization on the motor dyno), Field Weakening Drive can be set anywhere in the range of 0% (lowest torque, highest efficiency) to 100% (highest torque, lowest efficiency).
+ 
+If the ACIM motor was auto characterized, the range is restricted by the results of the Field Weakening Test. For these motors, Field Weakening Drive can be set anywhere in the range of 0% (lowest torque, highest efficiency) to Max Field Weakening Drive (highest torque, lowest efficiency). For auto characterized motors, setting Field Weakening Drive greater than the maximum setting found in the Field Weakening Test will result in poorer efficiency and less torque as the motor will be operating over the slip curve.
+[PAR_250]
+Sets the control loop gains for field weakening. Setting the rate too low may create surging in the vehicle as it accelerates at mid to high speeds. Setting the rate too high may create high frequency oscillations (usually audible) when the vehicle accelerates at mid to high speeds.
+[PAR_252]
+Sets the field current when no torque is requested from the motor. This current pre-fluxes the motor and can improve initial take-off at the expense of some battery consumption.
+[PAR_258]
+If, after Swap Encoder Direction has been set correctly, the vehicle drives in the wrong direction (i.e., drives forward when in reverse, and vice versa), try changing the setting of the Swap Two Phases parameter. This parameter has the same effect as physically swapping the cables on any two of the three motor phase connections.
+ 
+<b>Positive motor speed must be in the forward direction in order for the emergency reverse feature to operate properly.</b>
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+ 
+<b>Adjusting this parameter can be hazardous.  If in doubt, consult the controller manual Section 5, Step 10.</b>
+[PAR_259]
+Changes the motor encoder's effective direction of rotation. The encoder provides data used to calculate motor position and speed. This parameter must be set such that when the motor is turning forward, the controller reports back a positive motor speed.
+ 
+<b>Positive motor speed must be in the forward direction in order for the emergency reverse feature to operate properly.</b>
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+ 
+<b>Adjusting this parameter can be hazardous.  If in doubt, consult the controller manual Section 5, Step 10.</b>
+[PAR_260]
+This parameter references a predefined table of motor parameters for many AC motors. Consult your local Curtis customer support engineer for information on how to set this parameter based on your application and motor.
+[PAR_282]
+Setting this parameter to 1 multiplies the effective Kp gain by a factor of 4.  This was added to allow use of high impedance motors.
+[PAR_284]
+Limited Operating Strategy (LOS) is typically used to drive the vehicle back to a repair center at very low speeds in the event the motor encoder fails.
+ 
+Following an encoder failure ((either Encoder Fault (fault code 36) or Stall Detected (fault code 73)), and after the Interlock is cycled, the vehicle enters LOS mode thus allowing drive without motor encoder feedback.
+ 
+In LOS mode, the ability to achieve maximum torque even for a very short time is considered more important than smoothness.
+ 
+When LOS mode is entered, the Encoder LOS fault (fault code 93) becomes active and the encoder fault ((either Encoder Fault (fault code 36) or Stall Detected (fault code 73)) is cleared.
+ 
+When this parameter is programmed On, LOS mode will be entered in the event of an encoder fault followed by an Interlock cycle.
+ 
+When programmed Off, in the event of an encoder fault the encoder fault remains and drive is disabled.
+[PAR_285]
+This parameter indirectly defines the maximum speed for LOS mode by setting the maximum frequency that corresponds to LOS Max Speed. In LOS mode the throttle commands a frequency that is interpolated linearly between zero (at Throttle Command = 0%) and the programmed LOS Max Speed (at Throttle Command = 100%).
+[PAR_286]
+In LOS mode, a partial or full throttle command will result in the maximum current set by this parameter. This current setting is clamped by the controller's rated current.
+[PAR_287]
+In LOS mode, the maximum modulation depth acts to limit the current at higher speeds. This parameter should be set such that the modulation depth limit is reached prior to the LOS Max Speed limit, so that the motor current will fall off from LOS Max Current at higher speeds. This may allow the vehicle to drive longer in LOS mode, as it lessens the chance of the motor or controller overheating.
+[PAR_288]
+Defines the rate (in seconds) at which the frequency increases when full throttle is applied, while operating in LOS mode. This parameter should be set to a slow rate (high parameter value) so the frequency command has a very slow slew rate to ensure that the max torque point is hit for a reason-able period of time; this decreases the probability of going over the slip curve, and allows ramps or obstacles to be overcome.
+[PAR_289]
+Defines the rate (in seconds) at which the frequency decreases when throttle is released, while operating in LOS mode.
+[PAR_291]
+Changes the motor encoder's effective direction of rotation. The encoder provides data used to calculate motor position and speed. This parameter must be set such that when the motor is turning forward, the controller reports back a positive motor speed.
+ 
+<b>Positive motor speed must be in the forward direction in order for the emergency reverse feature to operate properly.</b>
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+ 
+<b>Adjusting this parameter can be hazardous.  If in doubt, consult the controller manual Section 5, Step 10.</b>
+[PAR_293]
+This parameter is used to start the PMAC motor characterization procedure.
+ Manually close the Interlock switch after this has been set, then set the Test Throttle to start the test.
+[PAR_294]
+Begins characterization if a Test Enable asserted.
+<b>IMPORTANT:</b> If motor starts to turn in <b>positive</b> vehicle speed direction, Test Throttle should be set to <b>1</b>.  If <b>negative</b> direction, Test Throttle should be set to <b>-1</b>.
+[PAR_295]
+This parameter is used to set the maximum motor speed allowed during PMAC motor characterization.
+[PAR_296]
+This parameter is used to set the maximum motor current allowed during PMAC motor characterization.
+[PAR_298]
+Bypasses the CR autotune during motor characeterization.  This should only be done if the autotuning isn't work correctly for a particular motor.  In that case the CR gains need to be determined manually.
+[PAR_300]
+Enables active Id weakening
+[PAR_301]
+Sets the control loop gains for field weakening. Setting the rate too low may create surging in the vehicle as it accelerates at mid to high speeds. Setting the rate too high may create high frequency oscillations (usually audible) when the vehicle accelerates at mid to high speeds.
+[PAR_303]
+Sets the minimum negative Id Current allowed to avoid demagnetization at a low temperature
+[PAR_304]
+Sets the minimum negative Id Current allowed to avoid demagnetization at a mid temperature
+[PAR_305]
+Sets the minimum negative Id Current allowed to avoid demagnetization at a high temperature
+[PAR_306]
+Sets the temperature for the low end of demag current temperature map
+[PAR_307]
+Sets the temperature for the low end of demag current temperature map
+[PAR_308]
+Sets the temperature for the high end of demag current temperature map
+[PAR_312]
+Sets the speed at which modulation depth has reached 100% (all available voltage is used) and where field weakening begins. This parameter is scaled by an internal motor characterization parameter, so the setting of FW Base Speed should always be done using the tuning test, which will take into account the scaling factor. Entering a speed observed from a torque vs. Speed plot should not be done, as this number fails to take into account the internal scaling factor.
+ 
+This parameter needs to be set during initial setup and reset each time the Motor Type or the low speed current limit is changed. For example, if you lower Drive_Current_Limit or PL_Drive_Nominal, you should reset this parameter.
+ 
+To determine the correct value, perform the FW Base Speed tuning test (for traction systems or for hydraulic systems depending on your application).
+[PAR_320]
+ Measure the line-line rms voltage while spinning passively at 1000 rpm.
+[PAR_321]
+This value should be measured on the motor by shorting the three phases together, external spinning up to high speed, then measuring any of the three phase currents.
+[PAR_322]
+Max-Torque-per-Amp iq-id table entry
+[PAR_323]
+Max-Torque-per-Amp iq-id table entry
+[PAR_324]
+Max-Torque-per-Amp iq-id table entry
+[PAR_325]
+Max-Torque-per-Amp iq-id table entry
+[PAR_326]
+Max-Torque-per-Amp iq-id table entry
+[PAR_327]
+Max-Torque-per-Amp iq-id table entry
+[PAR_328]
+Max-Torque-per-Amp iq-id table entry
+[PAR_329]
+Max-Torque-per-Amp iq-id table entry
+[PAR_337]
+Lq and Ld are estimated as a function of: 
+ 0 - Ipeak and Ipeak 
+ 1 - Iq and Id 
+ 2 - Iq and Iq
+[PAR_352]
+An additional adjustment of Rs to account for system losses in Torque Estimation
+[PAR_357]
+The electrical offset to the position sensor for magnet alignment in PMAC applications (4096 = 1 Mech Rev).
+[PAR_358]
+Compensation of the delay in motor PWM and sincos sensor filtering.
+[PAR_363]
+Minimum output by the Sin/Cos sensor on the Sin channel. Input detected at Position Feedback A (pin 31). The value is set during the PMAC motor characterization procedure.
+[PAR_364]
+Maximum output by the Sin/Cos sensor on the Sin channel. Input detected at Position Feedback A (pin 31). The value is set during the PMAC motor characterization procedure.
+[PAR_365]
+Minimum output by the Sin/Cos sensor on the Cos channel. Input detected at Position Feedback B (pin 32). The value is set during the PMAC motor characterization procedure.
+[PAR_366]
+Maximum output by the Sin/Cos sensor on the Cos channel. Input detected at Position Feedback B (pin 32). The value is set during the PMAC motor characterization procedure.
+[PAR_368]
+0 - use Power/Speed (most accurate at high speed)
+ 1 - use Torque Equation (Requires Ld, Lq tables, most accurate)
+ 2 - Blended with crossover at 133 Hz to Power/Speed
+[PAR_369]
+This parameter is set on defaults refresh, including a new OS download.
+ Running a successful autochar clears it, or it can be cleared manually if the user is certain the rest of the parameters are setup correctly.
+[PAR_371]
+Decoupling effect can be introduced up to 600%
+[PAR_372]
+This adds a virtual resistance to the stator to reduce ringing in the current loop
+[PAR_373]
+Current regulator gain reaches this multiple at HS Rpm
+[PAR_374]
+Current regulator HS Rpm for gain scheduling
+[PAR_391]
+Set this parameter to the type of position feedback device in your vehicle:
+ 
+1 = quadrature encoder
+2 = sin/cos device
+ 
+Note: A Parameter Mismatch Fault will result unless the Feedback Type matches the Motor Technology setting like so:
+ 
+If Motor Technology = 0 (ACIM), then Feedback Type must = 1 (quadrature encoder).
+ 
+If Motor Technology = 1 (PMAC), Feedback Type must = 2 (sin/cos device).
+[PAR_393]
+Auto-Start (1) routine aligns and spins up the motor to the minimum sensorless speed
+[PAR_394]
+Maximum Current during alignment and initial rotation.
+[PAR_395]
+The time (s) allowed for aligning the rotor before startup
+[PAR_396]
+Time to reach the start frequency.  Actual time may be shorter if jerk factor is employed.
+[PAR_397]
+Lowest sensorless operating speed allowed after startup.
+[PAR_399]
+The sliding-mode observer tuning gain
+[PAR_400]
+The sliding-mode observer error band
+[PAR_401]
+Offsets the sensorless position (entered in degrees).
+[PAR_402]
+Increases or decreases position offset with speed.
+[PAR_403]
+Ld estimate used for PMAC sensoreless calculations.
+[PAR_404]
+Lq estimate used for PMAC sensoreless calculations. Set Lq = Ld for SPM motors.
+[PAR_406]
+Sets the number of encoder pulses per revolution. This must be set to match the encoder; see motor nameplate.
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+ 
+<b>Adjusting this parameter can be hazardous; setting it improperly may cause vehicle malfunction, including uncommanded drive. For instructions, consult the controller manual Section 5, Step 1</b>
+[PAR_408]
+ Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_409]
+ Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_410]
+ Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_413]
+When programmed On, encoder fault checking is enabled. Three fault conditions are checked: Encoder Fault (fault code 36, Stall Detected (fault code 73), and Encoder Pulse Error (fault code 88).
+[PAR_414]
+If the controller transitions from above this speed to below minimum speed in 8ms an encoder fault will be declared
+[PAR_415]
+Speed determined to be 0 speed when using a sin/cos feedback sensor. Has no effect using a quadrature encoder, that value is calculated based on the speed for a single pulse.
+[PAR_417]
+Defines the minimum time it takes for the controller, while the vehicle is in motion, to detect that the encoder and the Encoder Steps parameter do not match. When the Encoder Steps setup is incorrect, the motor controller cannot properly calculate AC motor field orientation. The loss of field orientation can cause the motor to spin up toward full speed once any throttle is applied.
+ 
+This parameter sets a timer that starts once the throttle has been  moved and then released, the drive current is significant, and the motor is still accelerating. Note that the motor can spin at high rpm for several seconds before conditions allow the controller to properly detect a fault.
+ 
+An Encoder Pulse Error (fault code 88) is declared when this fault is detected.
+ 
+Setting the parameter to zero will disable this fault detection.
+[PAR_418]
+Sets the threshold below which the stall timer may count. If Motor Speed is less than Fault Stall Speed for Fault Stall Time, a Stall Detected fault (fault code 73) may be issued.
+[PAR_419]
+Sets a timer when no motor encoder movement is detected. If no motor encoder movement is detected for the programmed Fault Stall Time, with maximum throttle applied, a Stall Detected fault (fault code 73) is issued.
+[PAR_422]
+Defines the % allowable change in the SIN or COS feedback.  A SinCos Fault is genereted if this threshold is exceeded 10 times sequentially.
+[PAR_423]
+Defines the % allowable change in the SIN or COS feedback (high value used for first 30 seconds after interlock. This will allow the controller to adjust for slight variances if the sensor was changed.
+[PAR_424]
+A sin cos fault will be generated if the sensor is outside the tolerance for 10ms during this amount of time.
+[PAR_425]
+Minimum output by the Sin/Cos sensor on the Sin channel. Input detected at Position Feedback A (pin 31). The value is set during the PMAC motor characterization procedure.
+[PAR_426]
+Maximum output by the Sin/Cos sensor on the Sin channel. Input detected at Position Feedback A (pin 31). The value is set during the PMAC motor characterization procedure.
+[PAR_427]
+Minimum output by the Sin/Cos sensor on the Cos channel. Input detected at Position Feedback B (pin 32). The value is set during the PMAC motor characterization procedure.
+[PAR_428]
+Maximum output by the Sin/Cos sensor on the Cos channel. Input detected at Position Feedback B (pin 32). The value is set during the PMAC motor characterization procedure.
+[PAR_430]
+ Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_431]
+ Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_432]
+ Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_435]
+When programmed On, the motor temperature cutback and the motor temperature compensation features are enabled. This parameter can be used only if a temperature sensor has been properly configured.
+ 
+The motor temperature cutback feature will linearly cut back the current from 100% to 0% between the Temperature Hot and Temperature Max temperatures. The motor temperature compensation feature will adapt the motor control algorithms to varying motor temperatures, for improved efficiency and more consistant performance.
+[PAR_436]
+Five sensor types are predefined in the software:
+ 
+Type 1 KTY83-122
+Type 2 2x Type 1, in series
+Type 3 KTY84-130 or KTY84-150
+Type 4 2x Type 3, in series
+Type 5 PT1000
+ 
+Note: The industry standard KTY temperature sensors are silicon temperature sensors with a polarity band; <b>the polarity band of a KTY sensor must be the end connected to I/O Ground</b> (pin 7).
+[PAR_437]
+Often the sensor is placed in the motor at a location with a known offset to the critical temperature; the offset can be corrected with this parameter. The parameter can also be used to correct a known offset in the sensor itself.
+[PAR_438]
+When programmed On, drive current and all forms of regen braking current will be cut back based on motor temperature. All forms of regen braking current (Regen_Current_Limit, Brake_Current_Limit, EMR_Current_Limit, Interlock_Brake_Current_Limit) includes emergency reverse braking, interlock braking, brake input braking, direction reversal braking, neutral  braking, and speed limit braking.
+ 
+When programmed Off, only drive current (and not the regen braking currents) will be cut back based on motor temperature.
+ 
+If the vehicle has mechanical brakes, setting this parameter to On may help reduce motor heating.
+[PAR_439]
+Defines the temperature at which current cutback begins.
+[PAR_440]
+Defines the temperature at which current is cut back to zero.
+[PAR_441]
+When a Motor Temp Sensor Fault (fault code 29) is set, a LOS (Limited Operating Strategy) mode is engaged. The maximum speed is reduced to the programmed Max Speed in the operating mode (Max_Speed_SpdMx, Max_Speed_SpdM, Max_Speed_TrqM) or to the MotorTemp_LOS_Max_ Speed, whichever is lower.
+[PAR_443]
+Must be set to the vehicle's nominal battery pack voltage. This parameter is used in determining the overvoltage and undervoltage protection thresholds for the electronic system.
+ 
+Overvoltage protection cuts back regen braking to prevent damage to batteries and other electrical system components due to overvoltage. Undervoltage protection prevents systems from operating at voltages below their design thresholds.
+ 
+The four threshold points are calculated from the Nominal Voltage, Undervoltage Kp and Ki, User Overvoltage, and User Undervoltage parameter settings and the controller's minimum voltage and maximum voltage ratings.
+ 
+Overvoltage = Either Max Voltage or User Overvoltage x Nominal Voltage, whichever is lower.
+ 
+Severe Overvoltage = Overvoltage + 10V.
+ 
+Undervoltage = Either Min Voltage or User Undervoltage x Nominal Voltage, whichever is higher.
+ 
+Severe Undervoltage = Either drive current cut back to 0% for 64 ms or Brownout Voltage is reached, whichever comes first.
+ 
+The Brownout Voltage is determined by the controller base type and cannot be changed. When the capacitor voltage falls below the Brownout voltage the bridge is switched off (i.e., motor current is switched off). If the capacitor voltage stays below the Brownout voltage for > 64 milliseconds the controller will reset (equivalent to cycling the keyswitch). If the capacitor voltage rises above the Brownout voltage before 64 ms have passed the bridge will be reenabled. The Severe Undervoltage point cannot be set lower than the Brownout voltage.
+[PAR_444]
+When the battery voltage goes below the undervoltage threshold, a closed loop PI (Proportional/Integral) controller is enabled in an attempt to keep the battery voltage from drooping. It accomplishes this by cutting back the drive current, thereby reducing the load on the battery.
+ 
+The Kp term is the proportional gain and is set in units of % cutback per volt; for example, a setting of 25 would provide full current cutback with 4 V of droop.
+ 
+The Ki term is the integral gain. Integral gain will accumulate the voltage droop and attempt to bring the battery droop back to 0 V. Higher gains will react more strongly and quickly.
+ 
+Typically, Kp UV and Ki UV are used together to provide the best response. If the linear response of the previous AC controllers is preferred, set Ki UV = 0.
+[PAR_445]
+When the battery voltage goes below the undervoltage threshold, a closed loop PI (Proportional/Integral) controller is enabled in an attempt to keep the battery voltage from drooping. It accomplishes this by cutting back the drive current, thereby reducing the load on the battery.
+ 
+The Kp term is the proportional gain and is set in units of % cutback per volt; for example, a setting of 25 would provide full current cutback with 4 V of droop.
+ 
+The Ki term is the integral gain. Integral gain will accumulate the voltage droop and attempt to bring the battery droop back to 0 V. Higher gains will react more strongly and quickly.
+ 
+Typically, Kp UV and Ki UV are used together to provide the best response. If the linear response of the previous AC controllers is preferred, set Ki UV = 0.
+[PAR_447]
+The value of this parameter is a percentage of the Nominal Voltage setting. The User Overvoltage parameter can be used to adjust the overvoltage threshold, which is the voltage at which the controller will cut back regen braking to prevent damage to the electrical system.
+ 
+Typically this parameter is changed only when the controller is being used in an application at the low end of the controller's range: such as a 48-80V controller being used in a system with a 48V battery pack. In this case, the overvoltage threshold can be raised by setting the User Overvoltage to a higher value. The overvoltage threshold can never be raised above the controller's power base maximum voltage rating.
+[PAR_448]
+The value of this parameter is a percentage of the Nominal Voltage setting. The User Undervoltage parameter can be used to adjust the undervoltage threshold, which is the voltage at which the controller will cut back drive current to prevent damage to the electrical system.
+ 
+Typically this parameter is changed only when the controller is being used in an application at the high end of the controller's range: such as a 24-36V controller being used in a system with a 36V battery pack. In this case, the undervoltage threshold can be lowered by setting the User Undervoltage to a lower value. The undervoltage threshold can never be lowered below the controller's power base minimum voltage rating.
+[PAR_450]
+The reset voltage level is checked only once, when KSI is first turned on. Note that the BDI Reset Percent parameter also influences the algorithm that determines whether BDI Percentage is reset to 100%. Reset Volts Per Cell should always be set higher than Full Volts Per Cell.
+ 
+Reset Voltage Level = Reset Volts Per Cell x number of cells in the battery pack.
+[PAR_451]
+The full voltage level sets the Keyswitch Voltage that is considered to be 100% state-of-charge; when a loaded battery drops below this voltage, it begins to lose charge. Keyswitch Voltage is viewable in the programmer's Monitor >> Battery menu.
+ 
+Full Voltage Level = Full Volts Per Cell x number of cells in the battery pack.
+[PAR_452]
+The empty voltage level sets the Keyswitch_Voltage that is considered to be 0% state-of-charge.
+ 
+Empty Voltage Level = Empty Volts Per Cell x number of cells in the battery pack.
+[PAR_453]
+Sets the minimum time for the BDI algorithm to count down the BDI Percentage from 100% to 0%. The BDI algorithm integrates the time the filtered keyswitch voltage is below the state of charge voltage level. When that cumulative time exceeds the Discharge Time / 100, the BDI Percentage is decremented by one percentage point and a new state of charge voltage level is calculated.
+ 
+State of Charge Level = ((Full Voltage Level - Empty Voltage Level) x BDI Percentage / 100) + Empty Voltage Level.
+[PAR_454]
+When a battery has a high BDI percentage, its float voltage at KSI On can sometimes cause false resets. The BDI Reset Percent parameter addresses this problem by allowing the user to define a BDI Percentage value above which the BDI Percentage variable will not reset.
+ 
+When KSI is first powered on, the BDI Percentage variable will reset to 100% only if (Keyswitch Voltage > Reset Voltage Level) and (BDI Percentage < BDI Reset Percent).
+[PAR_473]
+Sets the low pass filter cutoff frequency.  Lower values will filter the voltage signal more.  Units are in rad/sec.  Divide by 2*pi to get equivalent value in Hz.
+[PAR_475]
+To turn on the Dual Drive feature, set this parameter On in both controllers.
+[PAR_476]
+Set this parameter Off in the master controller and On in the slave controller.
+[PAR_477]
+The master and slave controllers must have different CAN Node IDs, and each must know the CAN Node ID of the other controller so they can communicate.
+ 
+Set this parameter to the slave controller's CAN Node ID in the master controller, and to the master controller's CAN Node ID in the slave controller.
+[PAR_478]
+Sets the rate at which the CAN heartbeat messages are sent from the Dual Motor system.
+[PAR_479]
+Defines the maximum speed when a Dual Drive controller is running in LOS (Limited Operating Strategy) mode.
+[PAR_481]
+Set this to the maximum steer angle that is physically possible on the vehicle.
+[PAR_482]
+As the steering angle increases from the edge of the deadband to the critical angle (Critical Angle), the acceleration rate is reduced linearly from the normal value to the programmed Turn Accel Rate. Higher values represent slower acceleration.
+[PAR_483]
+Set this parameter to the angle at which the vehicle pivots around its inner wheel. Refer to the Dual Drive suppliment for the equation used to determine the angle.
+[PAR_484]
+As the steering angle increases from the edge of the deadband to the maximum steer angle (Steer Angle Max), maximum speed is reduced linearly from the normal value to the programmed Max Turn Speed.
+[PAR_485]
+Set this parameter to the Inner wheel speed as a percentage of outer wheel speed when the steer angle is 90 degrees. Refer to the dual-drive suppliment for the equation used to determine the appropriate percentage.
+[PAR_487]
+Set this parameter to the appropriate type for the steering pot you are using:
+ 
+1 - 2-wire rheostat, 5k-0 ohm input.
+2 - single-ended 3-wire 1k-10k ohm potentiometer, 0-5V voltage source, or current source
+3 - 2-wire rheostat, 0-5k ohm input
+4 - (not applicable)
+5 - VCL input (VCL_Steer)
+ 
+Note: Do not change this parameter while the controller is powering the motor. Any time this parameter is changed a Parameter Change Fault (fault code 49) is set and must be cleared by cycling power; this protects the controller and the operator.
+[PAR_488]
+Set Steer Pot Min to the voltage on the steering pot when steering as far as possible clockwise. Determine the value by reading the voltage on the pot when steering CW to the maximum position.
+[PAR_489]
+Set Steer Pot Zero to the voltage on the steering pot when steering straight ahead. Determine the value by reading the voltage on the pot when steering straight.
+[PAR_490]
+Set Steer Pot Max to the voltage on the steering pot when steering as far as possible counterclockwise. Determine the value by reading the voltage on the pot when steering CCW to the maximum position.
+[PAR_491]
+Setting this to On allows VCL to be used for additional steering processing.
+[PAR_493]
+As the steering angle increases from the edge of the deadband to the critical angle (Critical Angle), the acceleration rate is reduced linearly from the normal value to the programmed Turn Accel Rate. Higher values represent slower acceleration.
+[PAR_494]
+Set this parameter to the angle at which the vehicle pivots around its inner wheel. Refer to the Dual Drive suppliment for the equation used to determine the angle.
+[PAR_495]
+Sets the minimum threshold for the Dual Drive steering pot input. If the steering pot voltage goes below this threshold, a fault will be issued.
+[PAR_496]
+Sets the maximum threshold for the Dual Drive steering pot input. If the steering pot voltage goes above this threshold, a fault will be issued.
+[PAR_503]
+When this parameter is programmed On, the distance variables (Vehicle  Odometer, Braking Distance Captured, Distance Since Stop, Distance Fine, and the Capture Distance variables) will accumulate and display in metric units (km, meters, or decimeters). When programmed Off, the distance variables will accumulate and display in English units (miles, feet, or inches).
+[PAR_504]
+This parameter affects the vehicle speed displayed in the Monitor >> Motor menu, and also modifies the VCL variable Vehicle_Speed; it does not affect actual vehicle performance. The value entered for Speed to RPM is a conversion factor that scales motor speed to vehicle speed.
+ 
+KPH to RPM: (G/d)*5305, where G = gear ratio, d = tire diameter [mm].
+ 
+MPH to RPM: (G/d)*336.1, where G = gear ratio, d = tire diameter [in].
+[PAR_505]
+The controller captures the time it takes the motor to go from 0 rpm to the programmed Capture Speed. The result is stored as <b>Time to Speed 1</b> in the Monitor >> Vehicle menu. This timer starts every time the motor accelerates from zero speed.
+[PAR_506]
+This parameter allows a second capture speed to be defined, and works identically to Capture Speed 1. The result is stored as <b>Time to Speed</b> in the Monitor >> Vehicle menu.
+[PAR_507]
+The controller captures the time it takes the vehicle to travel from 0 rpm to the programmed Capture Distance. The result is stored as <b>Time to Dist 1</b> in the Monitor >> Vehicle menu. This timer starts every time the vehicle accelerates from zero speed.
+ 
+Note: For accurate distance measuring, the Speed to RPM parameter must be set correctly.
+ 
+With the Metric Units parameter programmed Off, distance is in units of feet. With Metric Units programmed On, distance is in units of meters.
+[PAR_508]
+This parameter allows a second capture distance to be defined, and works identically to Capture Distance 1. The result is stored as <b>Time to Dist 2</b> in the Monitor >> Vehicle menu.
+[PAR_509]
+This parameter allows a third capture distance to be defined, and works identically to Capture Distance 1. The result is stored as <b>Time to Dist 3</b> in the Monitor >> Vehicle menu.
+[PAR_511]
+Determines whether the emergency reverse function is active.
+ 
+On = emergency reverse is enabled.
+Off = emergency reverse is disabled.
+[PAR_512]
+Determines where the input comes from for emergency reverse.
+ 
+0 = emergency reverse activated by switch 1 (pin 24).
+1 = emergency reverse is activated by VCL functions Enable_Emer_Rev() and Disable_Emer_Rev().
+2 = emergency reverse activated by switch 1 (pin 24), but only if the vehicle is moving forward (forks trailing) when emergency reverse is activated.
+3 = emergency reverse is activated by VCL functions Enable_Emer_Rev() and Disable_Emer_Rev(), but only if the vehicle is moving forward (forks trailing) when emergency reverse is activated.
+[PAR_513]
+Determines whether the interlock switch must be turned off after emergency reverse before the vehicle can be driven again.
+ 
+On = Interlock and throttle and direction must all be cleared.
+Off = Only throttle and direction must be cleared.
+[PAR_514]
+Defines how long emergency reverse is allowed to be active after the vehicle is moving in the reverse direction. This timer will restart if the vehicle ever goes forward while emergency reverse is still active. The allowable range is 0-30 seconds, where 30 seconds is a special case of no time out.
+ 
+When emergency reverse times out, the Emer Rev Timeout fault is set. Cycling the emergency reverse input will clear the Emer Rev Timeout fault.
+ 
+To stop the vehicle after an EMR event (not move in reverse direction), set this parameter to 0.
+[PAR_515]
+Defines the maximum reverse speed of the motor (in motor rpm), when emergency reverse is active.
+[PAR_516]
+Sets the rate (in seconds) at which the vehicle accelerates in the opposite direction after it has been brought to a stop. If the vehicle is already traveling in the reverse direction below the EMR Speed, the EMR Accel Rate will bring the vehicle to the EMR Speed.
+[PAR_517]
+Sets the rate (in seconds) at which the vehicle brakes to a stop when emergency reverse is activated and the vehicle is moving forward. If the vehicle is already traveling in the reverse direction above the EMR Speed, the EMR Decel Rate will bring the vehicle down to the EMR Speed.
+[PAR_519]
+Determines whether the interlock braking function is active.
+ 
+On = The controller will attempt to bring the vehicle to a stop using regen braking when the interlock signal is removed.
+Off = The controller will disable the bridge after Sequencing Delay expires and allow the vehicle to roll freely when the interlock signal is removed. This option is typically used only when there is a user controlled mechanical or hydraulic brake system.
+[PAR_520]
+Sets the rate (in seconds) that is used to slow down the vehicle when the interlock is released at high vehicle speeds. Larger values represent slower response.
+[PAR_521]
+Sets the rate (in seconds) that is used to slow down the vehicle when the interlock is released at low vehicle speeds. Larger values represent slower response.
+[PAR_522]
+Controls the maximum allowable duration of an interlock braking event.
+ 
+The timer starts as soon as the interlock signal is removed. If the time expires before the vehicle has slowed below the Zero_Speed_Threshold, the EM brake will engage automatically.
+ 
+This timeout allows parallel usage of regen braking and the EM brake to reduce stopping distance. If Interlock Brake Timeout expires and the motor is still moving, regen braking will continue to retard vehicle motion in conjunction with the EM brake.
+ 
+Note: This parameter is only applicable when EM_Brake_Type = 1 or 2.
+[PAR_523]
+Controls the ramp rate of speed trajectory to motor speed when interlock braking is engaged. A faster decel rate will be used until the trajectory crosses the motor speed. A larger value of this parameter wil provide a smoother feel but may impact brake distance.
+[PAR_524]
+Controls the ramp rate of speed trajectory to motor speed when interlock braking is engaged. A faster decel rate will be used until the trajectory crosses the motor speed. A larger value of this parameter wil provide a smoother feel but may impact brake distance.
+[PAR_526]
+When programmed On, CAN NMT State must = 5 (operational state) in order for the interlock to be set.
+[PAR_527]
+The Node ID for the primary microprocessor is determined by the state of switches 5 and 6 at KSI turn on:
+ 
+Node_ID_1 is selected when Sw 6 = Off and Sw 5 = Off
+[PAR_528]
+The Node ID for the primary microprocessor is determined by the state of switches 5 and 6 at KSI turn on:
+ 
+Node_ID_2 is selected when Sw 6 = Off and Sw 5 = On
+[PAR_529]
+The Node ID for the primary microprocessor is determined by the state of switches 5 and 6 at KSI turn on:
+ 
+Node_ID_3 is selected when Sw 6 = On and Sw 5 = Off
+[PAR_530]
+The Node ID for the primary microprocessor is determined by the state of switches 5 and 6 at KSI turn on:
+ 
+Node_ID_4 is selected when Sw 6 = On and Sw 5 = On.
+[PAR_531]
+Sets the Node ID for the supervisor microprocessor. The Node ID is the first 7 bits of the 11-bit identifier (the COB ID).
+[PAR_532]
+Sets the CAN baud rate for the CANopen Slave system:
+ 
+-3=20Kbps, -2=50Kbps, -1=100Kbps, 0=125Kbps, 1=250Kbps, 2=500Kbps, 3=800Kbps, 4=1000Kbps.
+[PAR_535]
+Sets the rate at which the CAN heartbeat messages are sent from the CANopen Slave system.
+[PAR_536]
+Sets the PDO timeout period for the CANopen Slave system. After the  slave controller has sent a PDO MISO, it will declare a PDO Timeout Fault if the master controller has not sent a reply PDO MOSI message within the set time. Either PDO1 MOSI or PDO2 MOSI will reset the timer. Setting the PDO Timeout Period = 0 will disable this fault check.
+[PAR_537]
+Sets the PDO timeout period for the CANopen Slave system. After the  slave controller has sent a PDO MISO, it will declare a PDO Timeout Fault if the master controller has not sent a reply PDO MOSI message within the set time. Either PDO1 MOSI or PDO2 MOSI will reset the timer. Setting the PDO Timeout Period = 0 will disable this fault check.
+[PAR_538]
+Sets the minimum rate between CAN emergency messages from the CANopen Slave system. This prevents quickly changing fault states from generating so many emergency messages that they flood the CAN bus.
+[PAR_539]
+When Suppress CANopen Init is set = 1, at KSI On the initialization of the CANopen system is suppressed. Typically this is done so that the VCL program can make changes to the CANopen system before enabling it (by setting the variable Suppress_CANopen_Init = 0 and running the Setup_CAN() function).
+[PAR_555]
+Setting this parameter = 1 will reset the controller. This reset is similar to resetting by cycling the keyswitch. Reset Controller has the advantage of resetting without causing the parameter block to be reloaded into the 1313/1314 programmer.
+[MON_583]
+Throttle request to slew rate block.
+[MON_585]
+Mapped throttle request.
+[MON_586]
+Voltage at throttle pot wiper (pin 16).
+[MON_587]
+Brake request to slew rate block.
+[MON_588]
+Mapped brake request.
+[MON_589]
+Voltage at pot2 wiper (pin 17).
+[MON_590]
+Proportional driver current request.
+[MON_591]
+Voltage at steer pot wiper (pin 17) on Dual Drive traction slave.
+[MON_592]
+Steer angle degrees calculated in Dual Drive traction master.
+[MON_593]
+Interlock input on or off. The source of the interlock input is determined by the Interlock Type parameter:
+ 
+from Switch 3 (pin 9) if Interlock Type = 0
+from VCL function if Interlock Type = 1
+from KSI (pin 1) if Interlock Type = 2
+[MON_594]
+Emergency reverse input on or off. The source of the emergency reverse input is determined by the EMR Type parameter:
+ 
+from Switch 1 (pin 24) if EMR Type = 0
+from VCL function if EMR Type = 1
+[MON_595]
+Voltage at analog 1 (pin 24)
+[MON_596]
+Voltage at analog 2 (pin 8)
+[MON_597]
+Switch 1 on or off (pin 24)
+[MON_598]
+Switch 2 on or off (pin 8)
+[MON_599]
+Switch 3 on or off (pin 9)
+[MON_600]
+Switch 4 on or off (pin 10)
+[MON_601]
+Switch 5 on or off (pin 11)
+[MON_602]
+Switch 6 on or off (pin 12)
+[MON_603]
+Switch 7 on or off (pin 22)
+[MON_604]
+Switch 8 on or off (pin 33)
+[MON_605]
+Driver 1 input on or off (pin 6)
+[MON_606]
+Driver 2 input on or off (pin 5)
+[MON_607]
+Driver 3 input on or off (pin 4)
+[MON_608]
+Driver 4 input on or off (pin 3)
+[MON_609]
+Proportional driver on or off (pin 2)
+[MON_610]
+Digital Out 6 input on or off (pin 19)
+[MON_611]
+Digital Out 7 input on or off (pin 20)
+[MON_612]
+Switch 16 on or off (pin 14)
+[MON_614]
+Voltage at Analog output (pin 30)
+[MON_615]
+Digital Out 6 output on or off (pin 19)
+[MON_616]
+Digital Out 7 output on or off (pin 20)
+[MON_617]
+Driver 1 PWM output (pin 6)
+[MON_618]
+Driver 2 PWM output (pin 5)
+[MON_619]
+Driver 3 PWM output (pin 4)
+[MON_620]
+Driver 4 PWM output (pin 3)
+[MON_621]
+Proportional driver PWM output (pin 2)
+[MON_622]
+Current at proportional driver (pin 2)
+[MON_623]
+Voltage at +5V output (pin 26)
+[MON_624]
+Voltage at +12V output (pin 25)
+[MON_625]
+Combined current of the external +12V and +5V voltage supplies (pins 25 and 26)
+[MON_626]
+Voltage at pot low (pin 18)
+[MON_628]
+Batter state of charge.
+[MON_629]
+Voltage of controller's internal capacitor bank at B+ terminal.
+[MON_630]
+Voltage at KSI (pin 1)
+[MON_635]
+Motor speed in revolutions per minute.
+[MON_636]
+Displays the maximum allowed speed, which clamps the upper limit of the Max Speed parameters.
+[MON_639]
+Temperature sensor readout.
+[MON_640]
+Motor encoder phase A speed in revolutions per minute. This can be used to verify that phase A of the encoder is operating correctly. MotorSpeed A should equal MotorSpeed B in a properly operating motor encoder.
+ 
+Note: MotorSpeed A does not indicate direction.
+[MON_641]
+Motor encoder phase A speed in revolutions per minute. This can be used to verify that phase B of the encoder is operating correctly. MotorSpeed B should equal MotorSpeed A in a properly operating motor encoder.
+ 
+Note: MotorSpeed B does not indicate direction.
+[MON_642]
+Input at Position Feedback A (pin 31).
+[MON_643]
+Input at Position Feedback B (pin 32).
+[MON_647]
+RMS current of the controller, taking all three phases into account.
+[MON_648]
+Percentage of available voltage being used.
+[MON_649]
+Controller electrical frequency.
+[MON_651]
+Controller internal temperature.
+[MON_652]
+Main contactor state:
+ 
+0= open
+1= precharge
+2= weld check
+3= closing delay
+4= missing check
+5= closed (when Main Enable = On)
+6= delay
+7= arc check
+8= open delay
+9= fault
+10= closed (when Main Enable = Off)
+[MON_653]
+EM brake state:
+ 
+1= engaged
+2= releasing
+3= releasing
+4= engaging
+5= engaged and vehicle stopped
+[MON_654]
+On when regen is taking place; Off when it is not.
+[MON_655]
+The master timer is a timer of the total hours the controller is powered on (keyswitch hours).
+ 
+The master timer is controlled by the OS software and cannot be reset.
+[MON_656]
+A VCL Runtime Error (fault code 68) will store additional information about the cause of a VCL runtime error in the VCL Error Module and VCL Error variables. The resulting non-zero values can be compared to the runtime VCL module ID and error code definitions listed in the controller's OS SysInfo file, which should help pinpoint the VCL error that caused the runtime error.
+[MON_657]
+A VCL Runtime Error (fault code 68) will store additional information about the cause of a VCL runtime error in the VCL Error Module and VCL Error variables. The resulting non-zero values can be compared to the runtime VCL module ID and error code definitions listed in the controller's OS SysInfo file, which should help pinpoint the VCL error that caused the runtime error.
+[MON_661]
+0 - Motor Needs Characterization 
+1 ֠Characterization Not Started 
+2 ֠Align Rotor to Field 
+3 - Current Regulator Tuning 
+4 ֠Sin/Cos Peak Voltage Detection 
+5 ֠Determine Phasing 
+6 ֠Determine Sin/Cos Compensation 
+7 ֠Characterization Complete 
+8 ֠Characterization Error
+[MON_662]
+A Motor Characterization Fault (fault code 87) will store additional information in the Motor Characterization Error variable:
+ 
+0 = sequencing error. Normally caused by turning off Motor Characterization Test Enable before running the test.
+1 = encoder signal seen but step size not auto-detected; set up Encoder Steps manually
+2 = motor temp sensor fault
+3 = motor temp hot cutback fault
+4 = controller overtemp cutback fault
+5 = controller undertemp cutback fault
+6 = undervoltage cutback fault
+7 = severe overvoltage fault
+8 = encoder signal not seen, or one or both channels missing
+9 = motor parameters out of characterization range
+20 = sin/cos sensor not found
+21 = phasing not detected
+22 = sin/cos sensor characterization failure
+23 = started characterization procedure while motor rotating
+ 
+Notes: Errors 1 and 8 apply to ACIM motors only. Errors 20, 21, and 23 apply to PMAC motors only. Errors indicate the motor characterization data is invalid, except in the case of Error 1.
+[MON_663]
+A Parameter Mismatch Fault (fault code 99) will store additional information in the Parameter Mismatch Error variable:
+ 
+0 = None
+1 = Dual Motor Enable = On, and Control Mode Select is not set to either 0-Speed Mode Express or  1-Speed Mode
+2 = Feedback Type is incompatible with Motor Technology setting
+[MON_664]
+A Supervision Fault (fault code 77) will store additional information in the Supervision Error variable:
+ 
+0 = None
+1 = watchdog timeout comms
+2 = power supply fault detected
+3 = queue fault detected
+4 = ALU fault detected
+[MON_667]
+Displays the current available as a result of the motor temperature cutback function. A value of 100% indicates no cutback in current.
+[MON_668]
+Displays the current available as a result of the motor temperature cutback function. A value of 100% indicates no cutback in current.
+[MON_669]
+Displays the current available as a result of the motor temperature cutback function. A value of 100% indicates no cutback in current.
+[MON_670]
+Displays the current available as a result of the motor temperature cutback function. A value of 100% indicates no cutback in current.
+[MON_671]
+Displays the current available as a result of the battery current cutback function. A value of 100% indicates no cutback in current.
+[MON_673]
+Motor speed in revolutions per minute.
+[MON_674]
+Displays the value of the motor base speed captured in the most recent acceleration. This value is used to set the FW Base Speed parameter, using the FW Base Speed set procedure, or the ACIM motor characterization procedure described in the controller manual.
+[MON_675]
+Field test current reading to be used during the ACIM motor characterization procedure described in the controller manual.
+[MON_679]
+Signal error between the commanded motor speed trajectory and the actual motor RPM.
+[MON_680]
+Derivative of Speed_Trajectory - Motor_Speed_Raw used in the following error calculations. In units of rpm/second.
+[MON_681]
+Time that the following error exceeded the parameterized limit. If this time exceeds the parameterized time limit the system will throw a following error fault.
+[MON_683]
+Vehicle speed, in units of MPH or KPH, depending on the setting of the Metric Units parameter.
+[MON_684]
+Vehicle distance traveled, in units of miles or km, depending on the setting of the Metric Units parameter. For accurate distance measurements, the Speed to RPM parameter must be set correctly.
+[MON_687]
+Vehicle acceleration. The Speed to RPM parameter must be set correctly for accurate measurement.
+[MON_688]
+Time taken for the vehicle to go from zero rpm to the programmed Capture Speed 1 during its most recent such acceleration.
+[MON_689]
+Time taken for the vehicle to go from zero rpm to the programmed Capture Speed 2 during its most recent such acceleration.
+[MON_690]
+Time taken for the vehicle to go from programmed Capture Speed 1 to programmed Capture Speed 2 during its most recent such acceleration.
+[MON_691]
+Time taken for the vehicle to travel from zero rpm to the programmed Capture Distance 1 during its most recent such trip.
+ 
+For accurate distance measurements, the Speed to RPM parameter must be set correctly.
+[MON_692]
+Time taken for the vehicle to travel from zero rpm to the programmed Capture Distance 2 during its most recent such trip.
+ 
+For accurate distance measurements, the Speed to RPM parameter must be set correctly.
+[MON_693]
+Time taken for the vehicle to travel from zero rpm to the programmed Capture Distance 3 during its most recent such trip.
+ 
+For accurate distance measurements, the Speed to RPM parameter must be set correctly.
+[MON_694]
+Distance traveled by the vehicle starting with vehicle braking (initiated by throttle reversal, brake pot, VCL_Brake, or interlock braking) and ending when Motor_RPM = 0. Units are meters or feet, depending on the setting of the Metric Units parameter.
+ 
+For accurate distance measurements, the Speed to RPM parameter must be set correctly.
+[MON_695]
+Distance traveled by the vehicle starting from a stop. In effect, the vehicle is used as a tape measure. (In other words, if you travel 300 feet forward and then 300 feet in reverse, the distance would be 600.) The distance is continuously updated and will stop (and restart) when Motor_RPM = 0.
+ 
+For accurate distance measurements, the Speed to RPM parameter must be set correctly. Units are meters or feet, depending on the setting of the Metric Units parameter.
+[MON_696]
+Position measurement. Net distance in both the forward and reverse directions. (In other words, if you travel 20 inches forward and then 20 inches in reverse, the distance would be zero.) The distance is con-tinuously updated and will roll over when the variable goes over the limits. Units are decimeters or inches, depending on the setting of the Metric Units parameter.
+ 
+For accurate distance measurements, the Speed to RPM parameter must be set correctly.
+[MON_698]
+Displays the controller's Node ID.
+[MON_699]
+Controller CAN NMT state:
+ 
+0= initialization
+4= stopped
+127= pre-operational
+[MON_700]
+Mapping objects for PDO1 MOSI's eight bytes.
+ 
+Note: Each of these byte maps is a submenu containing 8 variables, one for each byte. Each variable is 32 bits.
+[MON_709]
+Mapping objects for PDO1 MISO's eight bytes.
+ 
+Note: Each of these byte maps is a submenu containing 8 variables, one for each byte. Each variable is 32 bits.
+[MON_718]
+Mapping objects for PDO2 MOSI's eight bytes.
+ 
+Note: Each of these byte maps is a submenu containing 8 variables, one for each byte. Each variable is 32 bits.
+[MON_727]
+Mapping objects for PDO2 MISO's eight bytes.
+ 
+Note: Each of these byte maps is a submenu containing 8 variables, one for each byte. Each variable is 32 bits.
