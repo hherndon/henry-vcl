@@ -1,4 +1,4 @@
-Curtis Diagnostics Dump made on Sat Apr 08 2:22:00 PM Pacific Daylight Time 2017
+Curtis Diagnostics Dump made on Fri Mar 11 2:57:25 PM Pacific Standard Time 2022
 
 Flash failed at error 2
 
@@ -6,9 +6,9 @@ Processor type is ST276
 
 The following files are in the Curtis\WinVCL directory (C:/Curtis/WinVCL)
 
-drwxr--r--   1        0       0     4096 Apr  8 13:05 Doc
-drwxr--r--   1        0       0     4096 Apr  8 13:05 Monitor_272
-drwxr--r--   1        0       0        0 Apr  8 13:05 Monitor_Old
+drwxr--r--   1        0       0     4096 Apr  8 2017 Doc
+drwxr--r--   1        0       0     4096 Apr  8 2017 Monitor_272
+drwxr--r--   1        0       0        0 Apr  8 2017 Monitor_Old
 -rw-r--r--   1        0       0     9242 Aug 21 2014 ST10Flash.cfg
 -rw-r--r--   1        0       0     2689 Aug 21 2014 Textdict.csv
 -rw-r--r--   1        0       0   361179 Jan 15 2015 WinVCL.tkd
@@ -32,7 +32,7 @@ drwxr--r--   1        0       0        0 Apr  8 13:05 Monitor_Old
 -rwxr--r--   1        0       0   122880 Jan 15 2015 pout.exe
 -rwxr--r--   1        0       0    86528 Jan 15 2015 pp.exe
 -rwxr--r--   1        0       0    77824 Jan 15 2015 run_time_limits.exe
--rw-r--r--   1        0       0     5010 Apr  8 13:05 setup.log
+-rw-r--r--   1        0       0     5010 Apr  8 2017 setup.log
 -rw-r--r--   1        0       0   192512 Aug 21 2014 st10flasher_272.dll
 -rw-r--r--   1        0       0   229376 Aug 21 2014 st10flasher_old.dll
 -rwxr--r--   1        0       0    65024 Jan 15 2015 stitch.exe
@@ -50,54 +50,57 @@ drwxrwxrwx   4        0       0        0 Dec 31 1969 tclkit-win32.exe
 
 The following files are in the WinVCL directory (C:/Users/T430/AppData/Local/WinVCL)
 
--rw-r--r--   1        0       0        0 Apr  8 14:22 Command.log
--rw-r--r--   1        0       0   192512 Apr  8 14:22 ST10Flasher.dll
--rw-r--r--   1        0       0      225 Apr  8 13:09 WinVCL.bak
--rw-r--r--   1        0       0      252 Apr  8 13:09 WinVCL.ini
-drwxr--r--   1        0       0        0 Apr  8 13:09 distrib
--rwxr--r--   1        0       0    71168 Apr  8 14:22 flash.exe
--rw-r--r--   1        0       0      172 Apr  8 14:22 flash_estimate.log
--rw-r--r--   1        0       0      310 Apr  8 14:16 flash_program.log
--rw-r--r--   1        0       0       43 Apr  8 14:22 fr.txt
--rw-r--r--   1        0       0      313 Apr  8 13:05 hello.bak
-drwxr--r--   1        0       0     4096 Apr  8 14:22 monitor
--rw-r--r--   1        0       0      252 Apr  8 13:09 new_proj.ini
-drwxr--r--   1        0       0     4096 Apr  8 13:09 os123xes
--rw-r--r--   1        0       0     9242 Apr  8 14:22 st10Flash.cfg
--rw-r--r--   1        0       0      242 Apr  8 14:22 temp.ini
+-rw-r--r--   1        0       0        0 Mar 11 14:57 Command.log
+-rw-r--r--   1        0       0      389 Jun  3 2018 HenryBike.bak
+-rw-r--r--   1        0       0      589 May 20 2018 HenryCar.bak
+-rw-r--r--   1        0       0   192512 Mar 11 14:57 ST10Flasher.dll
+-rw-r--r--   1        0       0      466 Mar 11 14:56 WinVCL.bak
+-rw-r--r--   1        0       0      463 Mar 11 14:57 WinVCL.ini
+drwxr--r--   1        0       0        0 Feb 18 2018 distrib
+-rwxr--r--   1        0       0    71168 Mar 11 14:57 flash.exe
+-rw-r--r--   1        0       0      172 Mar 11 14:57 flash_estimate.log
+-rw-r--r--   1        0       0      310 Feb 29 2020 flash_program.log
+-rw-r--r--   1        0       0       43 Mar 11 14:57 fr.txt
+-rw-r--r--   1        0       0      417 Mar 11 14:56 hello.bak
+drwxr--r--   1        0       0     4096 Mar 11 14:57 monitor
+-rw-r--r--   1        0       0      463 Mar 11 14:57 new_proj.ini
+drwxr--r--   1        0       0     4096 Feb 18 2018 os123xes
+-rw-r--r--   1        0       0     9242 Mar 11 14:57 st10Flash.cfg
+-rw-r--r--   1        0       0      242 Mar 11 14:57 temp.ini
 
 
 
 The following files are in the WinVCL directory (C:/Users/T430/AppData/Local/WinVCL/os123xes)
 
-drwxr--r--   1        0       0        0 Apr  8 13:09 Archive
--rw-r--r--   1        0       0    46110 Jan  8 2014 Startmanager_123xes_Primary_2_0.H86
--rw-r--r--   1        0       0      136 Sep 17 2015 os123xes.bsh
--rw-r--r--   1        0       0   223151 Sep 17 2015 os123xes.bsl
--rw-r--r--   1        0       0    83563 Sep 11 2015 os123xes.def
--rw-r--r--   1        0       0     2110 Apr  8 14:21 os123xes.dfi
--rw-r--r--   1        0       0     2102 Nov 10 2015 os123xes.dfl
--rw-r--r--   1        0       0   627370 Sep 17 2015 os123xes.hex
--rw-r--r--   1        0       0   288574 Sep 11 2015 os123xes.htm
--rw-r--r--   1        0       0    45484 Sep 11 2015 os123xes.map
--rw-r--r--   1        0       0    86518 Sep 11 2015 os123xes.mon
--rw-r--r--   1        0       0       10 Nov 10 2015 os123xes.pdk
--rw-r--r--   1        0       0    12890 Nov 10 2015 os123xes.prm
--rw-r--r--   1        0       0      364 Nov 10 2015 os123xes.txt
--rw-r--r--   1        0       0   138722 Nov 10 2015 pout.app
+drwxr--r--   1        0       0        0 Feb 18 2018 Archive
+-rw-r--r--   1        0       0    46110 Oct  5 2015 Startmanager_123xes_Primary_2_0.H86
+-rw-r--r--   1        0       0      156 Jan 25 2018 os123xes.bsh
+-rw-r--r--   1        0       0   275699 Jan 25 2018 os123xes.bsl
+-rw-r--r--   1        0       0   103153 Jan 25 2018 os123xes.def
+-rw-r--r--   1        0       0     2752 Mar 11 14:56 os123xes.dfi
+-rw-r--r--   1        0       0     2743 Jan 25 2018 os123xes.dfl
+-rw-r--r--   1        0       0     3340 Jan 25 2018 os123xes.eif
+-rw-r--r--   1        0       0   775122 Jan 25 2018 os123xes.hex
+-rw-r--r--   1        0       0   310993 Jan 25 2018 os123xes.htm
+-rw-r--r--   1        0       0    58682 Jan 25 2018 os123xes.map
+-rw-r--r--   1        0       0   108026 Jan 25 2018 os123xes.mon
+-rw-r--r--   1        0       0       10 Jan 25 2018 os123xes.pdk
+-rw-r--r--   1        0       0    16834 Jan 25 2018 os123xes.prm
+-rw-r--r--   1        0       0      637 Jan 25 2018 os123xes.txt
+-rw-r--r--   1        0       0   170157 Jan 25 2018 pout.app
 
 
 
 The following files are in the monitor directory (C:/Users/T430/AppData/Local/WinVCL/monitor)
 
--rw-r--r--   1        0       0     3824 Apr  8 14:22 Monitor001.hex
--rw-r--r--   1        0       0     4449 Apr  8 14:22 Monitor002.hex
--rw-r--r--   1        0       0     4449 Apr  8 14:22 Monitor003.hex
--rw-r--r--   1        0       0     4363 Apr  8 14:22 Monitor004a.hex
--rw-r--r--   1        0       0     5246 Apr  8 14:22 Monitor004b.hex
--rw-r--r--   1        0       0     3962 Apr  8 14:22 Monitor006.hex
--rw-r--r--   1        0       0     2150 Apr  8 14:22 st10noflash.hex
--rw-r--r--   1        0       0      382 Apr  8 14:22 startchipid.hex
+-rw-r--r--   1        0       0     3824 Mar 11 14:57 Monitor001.hex
+-rw-r--r--   1        0       0     4449 Mar 11 14:57 Monitor002.hex
+-rw-r--r--   1        0       0     4449 Mar 11 14:57 Monitor003.hex
+-rw-r--r--   1        0       0     4363 Mar 11 14:57 Monitor004a.hex
+-rw-r--r--   1        0       0     5246 Mar 11 14:57 Monitor004b.hex
+-rw-r--r--   1        0       0     3962 Mar 11 14:57 Monitor006.hex
+-rw-r--r--   1        0       0     2150 Mar 11 14:57 st10noflash.hex
+-rw-r--r--   1        0       0      382 Mar 11 14:57 startchipid.hex
 
 ----------------------------- error 1 would occur here
 
@@ -133,6 +136,7 @@ Error 2: There was a problem executing flash when trying to make the download ti
                CommonProgramFiles = C:\Program Files (x86)\Common Files
           CommonProgramFiles(x86) = C:\Program Files (x86)\Common Files
                CommonProgramW6432 = C:\Program Files\Common Files
+                       DriverData = C:\Windows\System32\Drivers\DriverData
    FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
   FPS_BROWSER_USER_PROFILE_STRING = Default
                  FP_NO_HOST_CHECK = NO
@@ -143,7 +147,8 @@ Error 2: There was a problem executing flash when trying to make the download ti
                       LOGONSERVER = \\T430-PC
              NUMBER_OF_PROCESSORS = 4
                                OS = Windows_NT
-                         OneDrive = C:\Users\T430\OneDrive
+                         OneDrive = C:\Users\T430\OneDrive - Zero Motorcycles, Inc
+               OneDriveCommercial = C:\Users\T430\OneDrive - Zero Motorcycles, Inc
                           PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
            PROCESSOR_ARCHITECTURE = x86
            PROCESSOR_ARCHITEW6432 = AMD64
@@ -152,7 +157,7 @@ Error 2: There was a problem executing flash when trying to make the download ti
                PROCESSOR_REVISION = 3a09
                      PSModulePath = C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
                            PUBLIC = C:\Users\Public
-                             Path = C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+                             Path = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\T430\AppData\Local\Microsoft\WindowsApps;C:\Users\T430\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\T430\AppData\Local\Programs\Python\Python38;C:\Users\T430\AppData\Local\GitHubDesktop\bin
                       ProgramData = C:\ProgramData
                      ProgramFiles = C:\Program Files (x86)
                 ProgramFiles(x86) = C:\Program Files (x86)
